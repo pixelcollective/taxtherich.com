@@ -1,0 +1,7 @@
+staging.taxtherich.com ansible_host=142.93.21.156
+
+[staging]
+staging.taxtherich.com
+
+[web]
+staging.taxtherich.com
