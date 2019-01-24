@@ -6,8 +6,6 @@ wordpress_sites:
   taxtherich.com:
     site_hosts:
       - canonical: staging.taxtherich.com
-        # redirects:
-        #   - otherdomain.com
     local_path: ../taxtherich.com # path targeting local Bedrock site directory (relative to Ansible root)
     repo: git@github.com:pixelcollective/taxtherich.com.git # replace with your Git repo URL
     repo_subtree_path: taxtherich.com # relative path to your Bedrock/WP directory in your repo
