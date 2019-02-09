@@ -1,0 +1,154 @@
+html {
+  @include sans-serif;
+  @include bg-light-gray;
+  @include black-80;
+}
+
+.navbar {
+  .container {
+    @include flex;
+    @include justify-between;
+    @include mw8;
+    @include ml-auto;
+    @include mr-auto;
+    @include ph4;
+
+    div {
+      @include dib;
+      @include pv4;
+      @include ph0;
+
+      a {
+        @include dark-red;
+        @include no-underline;
+      }
+
+      &.navbar-brand a {
+        @include fw8;
+        @include black;
+        @include ttu;
+        @include f4;
+      }
+
+      &.navbar-start a,
+      &.navbar-end a {
+        @include tracked;
+        @include ttu;
+        @include f5;
+        @include v-mid;
+
+
+        &:not(:last-child) {
+          @include mr4;
+        }
+      }
+
+      &.navbar-start,
+      &.navbar-end {
+        @include dn;
+      }
+    }
+  }
+}
+
+.splash {
+  @include mw8;
+  @include ml-auto;
+  @include mr-auto;
+
+  .row {
+    @include flex;
+    @include flex-row-l;
+    @include flex-column;
+  }
+
+  h1 {
+    @include db;
+    @include w-100;
+    @include ph4;
+  }
+
+  .left {
+    @include db;
+    @include w-100;
+    @include cover;
+
+    @media screen and (min-width: 600px) {
+      min-height: 300px;
+    }
+
+    @media screen and (max-width: 599px) {
+      min-height: 100vw;
+    }
+  }
+
+  .right {
+    @include db;
+    @include w-100;
+
+    .can_embed {
+      @include pa4;
+
+      #can_embed_form {
+        #can_embed_form_innner {
+          form {
+            #form_col1,
+            #form_col2 {
+              float: none !important;
+            }
+          }
+        }
+
+        h2,
+        h4 {
+          display: none;
+        }
+
+        .floatlabel-wrapper {
+          @include db;
+          @include mv2;
+        }
+
+        label {
+          @include db;
+          @include mv2;
+
+          @include gray;
+          @include f7
+        }
+
+        input {
+          @include w-100;
+          @include pa2;
+        }
+
+        [type="submit"] {
+          @include db;
+          @include mt4;
+          @include bg-red;
+          @include white;
+
+          cursor: pointer;
+
+          :hover {
+            background-color: black !important;
+          }
+        }
+      }
+
+      li {
+        @include unlist;
+      }
+
+      .international_link-wrap,
+      .country_drop_wrap,
+      #logo_wrap,
+      #action_info,
+      .ajax-loading,
+      #d_sharing {
+        display: none;
+      }
+    }
+  }
+}
+
