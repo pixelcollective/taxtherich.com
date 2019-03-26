@@ -28,6 +28,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "animejs": "^3.0.1",
     "mithril": "^2.0.0-rc.4"
   }
 }

@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 input {
   @apply relative overflow-hidden;
 
@@ -6,16 +7,17 @@ input {
 
     background-color: #ccc;
     transition: 0.4s;
-    height: 2px;
+    height: 0.1rem;
   }
 
   &:focus ~ .focus-border {
     @apply w-64;
 
     background-color: #3399FF;
-    transform: translateY(-1px);
+    transform: translateY(-0.1rem);
     transition:
       width 0.4s
       transform none;
   }
 }
+/* purgecss stop ignore */
