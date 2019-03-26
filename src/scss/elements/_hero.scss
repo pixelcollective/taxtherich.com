@@ -1,0 +1,15 @@
+.hero {
+  @apply fullscreen focal bg-grey-lighter font-sans;
+
+  &__heading {
+    @apply tracking-wide text-4xl;
+  }
+
+  > div {
+    @apply w-64;
+
+    > div {
+      @apply w-full;
+    }
+  }
+}

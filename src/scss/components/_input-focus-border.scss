@@ -1,0 +1,21 @@
+input {
+  @apply relative overflow-hidden;
+
+  ~ .focus-border {
+    @apply absolute w-64;
+
+    background-color: #ccc;
+    transition: 0.4s;
+    height: 2px;
+  }
+
+  &:focus ~ .focus-border {
+    @apply w-64;
+
+    background-color: #3399FF;
+    transform: translateY(-1px);
+    transition:
+      width 0.4s
+      transform none;
+  }
+}

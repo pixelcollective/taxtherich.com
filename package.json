@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build:production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.5.0",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.15.3",
+    "laravel-mix": "^4.0.14",
+    "laravel-mix-eslint": "^0.1.2",
+    "laravel-mix-pug": "^0.3.0",
+    "laravel-mix-purgecss": "^4.1.0",
+    "laravel-mix-stylelint": "^0.2.0",
+    "postcss-modules": "^1.4.1",
+    "precss": "^4.0.0",
+    "pug": "^2.0.3",
+    "sass": "^1.17.3",
+    "sass-loader": "7.*",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "tailwindcss": "^0.7.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "mithril": "^2.0.0-rc.4"
+  }
+}

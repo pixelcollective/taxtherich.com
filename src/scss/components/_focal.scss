@@ -1,0 +1,7 @@
+.focal {
+  @apply flex justify-center content-center items-center flex-col
+}
+
+.fullscreen {
+  @apply min-w-full min-h-screen;
+}

@@ -1,0 +1,51 @@
+/* purgecss start ignore */
+.can_embed.petition {
+  @apply block mt-12 max-w-full;
+
+  h2,
+  h3,
+  h4,
+  .action_info_user,
+  img,
+  #d_sharing {
+    @apply hidden;
+  }
+
+  li {
+    @apply list-reset;
+  }
+
+  label {
+    @apply hidden pb-2;
+  }
+
+  input {
+    @apply block w-full py-2 px-2 mt-6 bg-transparent outline-none;
+  }
+
+  .international_link-wrap,
+  .country_drop_wrap {
+    @apply hidden;
+  }
+
+  label[for="form-comments"] {
+    @apply hidden;
+  }
+
+  #form-comments {
+    @apply hidden;
+  }
+
+  input[name="commit"] {
+    @apply inline-block bg-indigo text-white mt-12 w-32 cursor-pointer shadow tracking-wide;
+
+    transition: 0.4s;
+
+    &:hover {
+      @apply shadow-lg;
+
+      transition: 0.4s;
+    }
+  }
+}
+/* purgecss end ignore */
