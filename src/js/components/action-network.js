@@ -1,19 +1,39 @@
-const actionnetwork = (document) => {
-    document.addEventListener('can_embed_loaded', function() {
-      const button = document.querySelector('input[name="commit"]')
-      let textInputs = document.querySelectorAll([
-        'input[type="text"]',
-        'input[type="email"]'
-      ])
+const actionnetwork = (function(document) {
+  const attributes = {
+    focusBorderTemplate: String,
+    button: Object,
+    textInputs: Object,
+  }
 
-      const focusBorderTemplate = `<span class="focus-border"></span>`
+  document.addEventListener('can_embed_loaded', () => {
+    attributes.focusBorderTemplate = `<span class="focus-border"></span>`
+    attributes.button = document.querySelector('input[name="commit"]')
+    attributes.textInputs = document.querySelectorAll([
+      'input[type="text"]',
+      'input[type="email"]'
+    ])
+  })
 
-      textInputs.forEach(input => {
-        input.outerHTML += focusBorderTemplate;
+  return {
+    changeSubmitButtonText: function(value) {
+      document.addEventListener('can_embed_loaded', function() {
+        attributes.button.setAttribute('value', value)
       })
 
-      button.setAttribute('value', 'Tax the Rich')
-    })
-}
+      return this
+    },
 
-export default { actionnetwork }
+    addFocusBorder: function() {
+      document.addEventListener('can_embed_loaded', function() {
+        attributes.textInputs.forEach(input => {
+          input.outerHTML += attributes.focusBorderTemplate;
+        })
+      })
+
+      return this
+    },
+
+  }
+})(document)
+
+export default actionnetwork

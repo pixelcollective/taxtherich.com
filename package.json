@@ -29,6 +29,10 @@
   },
   "dependencies": {
     "animejs": "^3.0.1",
-    "mithril": "^2.0.0-rc.4"
+    "fs": "^0.0.1-security",
+    "knockout": "^3.5.0",
+    "mithril": "^2.0.0-rc.4",
+    "plates": "^0.4.11",
+    "scaleapp": "^0.4.4"
   }
 }

@@ -5,7 +5,11 @@
     @apply tracking-wide text-4xl;
   }
 
-  > div {
+  &__vector {
+    @apply w-128 mr-8 py-16 pr-16;
+  }
+
+  &__cta {
     @apply w-64;
 
     > div {
@@ -14,14 +18,13 @@
   }
 }
 
-.tophat {
+.moneybags {
   @apply my-8;
-}
 
-.tophat path {
-  fill-opacity: 0;
-  stroke-width: 1px;
-  fill: #000;
-  stroke: #000;
-  opacity: 0;
+  path {
+    fill-opacity: 0;
+    fill: #000;
+    stroke: #000;
+    opacity: 0;
+  }
 }

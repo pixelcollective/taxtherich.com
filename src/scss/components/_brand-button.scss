@@ -1,0 +1,11 @@
+.brand-button {
+  @apply inline-block bg-indigo text-white mt-12 w-64 cursor-pointer shadow tracking-wide;
+
+  transition: 0.4s;
+}
+
+.brand-button-hover {
+  @apply shadow-lg;
+
+  transition: 0.4s;
+}

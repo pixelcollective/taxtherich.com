@@ -1,4 +1,5 @@
 /* purgecss start ignore */
+
 .can_embed.petition {
   @apply block mt-12 max-w-full;
 
@@ -41,15 +42,12 @@
   }
 
   input[name="commit"] {
-    @apply inline-block bg-indigo text-white mt-12 w-64 cursor-pointer shadow tracking-wide;
-
-    transition: 0.4s;
+    @apply brand-button;
 
     &:hover {
-      @apply shadow-lg;
-
-      transition: 0.4s;
+      @apply brand-button-hover;
     }
   }
 }
+
 /* purgecss end ignore */

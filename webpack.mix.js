@@ -55,7 +55,8 @@ if (mix.inProduction()) {
 }
 
 mix.js('src/js/index.js', './dist/js/app.js')
-   .sass('./src/scss/main.scss', './dist/css/app.css').options(config.postCSS)
+   .sass('./src/scss/main.scss', './dist/css/app.css')
+      .options(config.postCSS)
    .pug('src/index.pug', './../dist')
    .setPublicPath('./dist')
    .browserSync(config.browserSync)

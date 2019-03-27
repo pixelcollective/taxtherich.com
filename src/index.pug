@@ -2,8 +2,10 @@ extends layout.pug
 block content
   div(class='hero')
     div(class='hero__vector')
-    h1(class='hero__heading') Tax The Rich!
-    div(id='can-petition-area-add-your-name-tax-the-rich')
+    div(class='hero__right')
+      h1(data-app='title' class='hero__heading')
+      p(data-app='subtitle' class='hero__subtitle font-sans')
+      div(class='hero__cta' id='can-petition-area-add-your-name-tax-the-rich')
 
 block scripts
   script(src="js/app.js")
