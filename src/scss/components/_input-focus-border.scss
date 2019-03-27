@@ -5,16 +5,15 @@ input {
   ~ .focus-border {
     @apply absolute w-64;
 
-    background-color: #ccc;
+    background-color: #006400;
     transition: 0.4s;
     height: 0.1rem;
   }
 
   &:focus ~ .focus-border {
-    @apply w-64;
+    @apply w-64 bg-white;
 
-    background-color: #3399FF;
-    transform: translateY(-0.1rem);
+    transform: translateY(-0.05rem);
     transition:
       width 0.4s
       transform none;

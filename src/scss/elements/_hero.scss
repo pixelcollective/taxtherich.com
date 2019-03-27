@@ -1,12 +1,12 @@
 .hero {
-  @apply fullscreen focal bg-grey-lighter font-sans;
+  @apply fullscreen focal bg-green font-sans flex-col;
 
   &__heading {
-    @apply tracking-wide text-4xl;
+    @apply tracking-wide text-4xl mb-2;
   }
 
   &__vector {
-    @apply w-128 mr-8 py-16 pr-16;
+    @apply w-full w-full;
   }
 
   &__cta {
@@ -18,13 +18,23 @@
   }
 }
 
+@screen md {
+  .hero {
+    @apply flex-row;
+
+    &__vector {
+      @apply w-2/5 mr-12;
+    }
+  }
+}
+
 .moneybags {
   @apply my-8;
 
   path {
     fill-opacity: 0;
-    fill: #000;
-    stroke: #000;
+    fill: #032f03;
+    stroke: #062706;
     opacity: 0;
   }
 }

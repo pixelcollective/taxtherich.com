@@ -1,7 +1,7 @@
 /* purgecss start ignore */
 
 .can_embed.petition {
-  @apply block mt-12 max-w-full;
+  @apply block max-w-full;
 
   #action_welcome_message {
     @apply text-center;
@@ -25,7 +25,11 @@
   }
 
   input {
-    @apply block w-full py-2 px-2 mt-6 bg-transparent outline-none;
+    @apply block w-full py-2 px-2 mt-6 bg-transparent outline-none text-white;
+
+    &::placeholder {
+      @apply text-black opacity-50;
+    }
   }
 
   .international_link-wrap,
