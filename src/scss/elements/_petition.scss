@@ -4,7 +4,19 @@
   @apply block max-w-full;
 
   #action_welcome_message {
-    @apply text-center;
+    @apply text-left mt-12;
+
+    a {
+      @apply text-black no-underline border-b-2 border-white;
+
+      transition: all 0.4s;
+    }
+
+    a:hover {
+      @apply text-white bg-black border-b-0;
+
+      transition: all 0.4s;
+    }
   }
 
   h2,

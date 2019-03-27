@@ -6,15 +6,11 @@
   }
 
   &__vector {
-    @apply w-full w-full;
+    @apply w-full px-12;
   }
 
-  &__cta {
-    @apply w-64;
-
-    > div {
-      @apply w-full;
-    }
+  &__right {
+    @apply py-12;
   }
 }
 
@@ -24,6 +20,10 @@
 
     &__vector {
       @apply w-2/5 mr-12;
+    }
+
+    &__right {
+      @apply w-2/5;
     }
   }
 }
