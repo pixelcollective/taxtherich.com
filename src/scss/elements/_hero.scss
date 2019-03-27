@@ -24,6 +24,10 @@
 
     &__right {
       @apply w-2/5;
+
+      > div {
+        @apply w-full;
+      }
     }
   }
 }
