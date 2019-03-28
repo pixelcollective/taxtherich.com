@@ -1,10 +1,20 @@
 import anime from 'animejs'
+import Parallax from 'parallax-js'
 
 const animations = (function(document) {
   return {
     placeSVG: function(selector, svg) {
       let canvas = document.querySelector(selector)
       canvas.innerHTML = svg
+
+      return this
+    },
+
+    doParallax: function() {
+      let scene = document.querySelector('[data-parallax]')
+      new Parallax(scene, {
+        relativeInput: true,
+      })
 
       return this
     },

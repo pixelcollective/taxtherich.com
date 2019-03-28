@@ -2,14 +2,18 @@ extends layout.pug
 block content
   div(class='brand')
     img(src='images/tax-the-rich.png' alt='Tax The Rich' title='Tax The Rich' class='logo')
-  div(class='hero')
-    div(class='hero__vector')
-    div(class='hero__right')
-      h1(data-node='title' class='hero__heading')
-      p(data-node='subtitle' class='hero__subtitle font-sans')
-      div(class='hero__cta')
-        div(id='can-petition-area-add-your-name-tax-the-rich')
-        div(data-node="disclaimer" class="disclaimer")
+  div(data-parallax class='hero')
+    div(data-depth='0.3' class='hero__left')
+      div(class='hero__layer hero__layer-left')
+        div(class='hero__vector')
+    div(data-depth='0.1' class='hero__right')
+      div(class='hero__layer hero__layer-right')
+        div(class='hero__titling')
+          h1(data-node='title' class='hero__heading')
+          p(data-node='subtitle' class='hero__subtitle font-sans')
+        div(class='hero__cta')
+          div(id='can-petition-area-add-your-name-tax-the-rich')
+          div(data-node="disclaimer" class="disclaimer")
 
   div(class='context')
     div(class='container')
@@ -18,7 +22,7 @@ block content
 
   div(class='provisions')
     div(class='container')
-      span(class="provisions__title") Introducing the <em>American Plutocracy Prevention Act &mdash;</em>
+      span(data-node='provisions_intro' class="provisions__title")
       div(data-columns="act_provisions")
 
 block scripts
