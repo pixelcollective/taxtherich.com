@@ -1,5 +1,17 @@
 {
-  "title": "Tax The Rich",
-  "subtitle": "Jeff Bezos doesn't deserve to eat your lunch.",
-  "button": "Join the Movement"
+  "title": "Join us in saying \"Tax The Rich\"",
+  "subtitle": "<em>Because they have almost all of the money.</em>",
+  "petition_intro": "<span class=\"salutations\">Dear Democratic Leaders:</span> America’s extreme wealth inequality now threatens our freedom and democracy. We respectfully demand that you launch a comprehensive legislative offensive to tax the rich. Specifically we want an American Plutocracy Prevention Act with 3 main pillars:",
+  "petition_demands": [
+    "Restore the top income tax rate to 70%",
+    "Levy an Annual Wealth Tax on the Ultra-Rich",
+    "Strengthen the estate tax to prevent wealth dynasties"
+  ],
+  "act_provisions": [
+    "<span class=\"lead-sentence\">Restore the Top Income Tax Rate to 70 Percent on Incomes Over $10 million.</span> Proposed by Rep. Alexandria Ocasio-Cortez, this would return the income tax to it previous progressivity under Republican President Dwight Eisenhower.",
+    "<span class=\"lead-sentence\">Levy an Annual Wealth Tax on the Super-Rich.</span> Senator Warren’s proposal is to levy an annual wealth tax of 2 percent on wealth over $50 million, with a 3 percent rate on wealth over $1 billion. This tax would put a brake on accumulated wealth and generate $3 trillion in revenue over the next decade.",
+    "<span class=\"lead-sentence\">Strengthen the Estate Tax to Prevent Wealth Dynasties.</span> The estate tax is our nation’s only levy on the inherited wealth of multi-millionaires and billionaires. Senator Sanders closes loopholes in the current estate tax and adds a graduated rate, with a 77 percent rate on estates over $1 billion."
+  ],
+  "button": "Join the Movement",
+  "disclaimer": "By signing this petition you agree to allow Patriotic Millionaires to send communications on your behalf to elected representatives and corporate powerholders demanding changes in US policy.<br/><br/>You may also receive important updates about this campaign in your inbox, no more than once a week. Privacy policy."
 }

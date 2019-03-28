@@ -1,16 +1,26 @@
+.logo {
+  @apply fixed w-16 z-10;
+
+  left: 1rem; top: 1rem;
+}
+
 .hero {
-  @apply fullscreen focal bg-green font-sans flex-col;
+  @apply focal bg-green font-sans flex-col pb-24 pt-0 justify-around;
 
   &__heading {
     @apply tracking-wide text-4xl mb-2;
   }
 
   &__vector {
-    @apply w-full px-12;
+    @apply w-full;
   }
 
   &__right {
     @apply py-12;
+
+    .disclaimer {
+      @apply mt-8 text-xs;
+    }
   }
 }
 
@@ -19,11 +29,11 @@
     @apply flex-row;
 
     &__vector {
-      @apply w-2/5 mr-12;
+      @apply w-3/5;
     }
 
     &__right {
-      @apply w-2/5;
+      @apply w-1/5;
 
       > div {
         @apply w-full;

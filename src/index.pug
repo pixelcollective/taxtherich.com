@@ -1,11 +1,25 @@
 extends layout.pug
 block content
+  div(class='brand')
+    img(src='images/tax-the-rich.png' alt='Tax The Rich' title='Tax The Rich' class='logo')
   div(class='hero')
     div(class='hero__vector')
     div(class='hero__right')
-      h1(data-app='title' class='hero__heading')
-      p(data-app='subtitle' class='hero__subtitle font-sans')
-      div(class='hero__cta' id='can-petition-area-add-your-name-tax-the-rich')
+      h1(data-node='title' class='hero__heading')
+      p(data-node='subtitle' class='hero__subtitle font-sans')
+      div(class='hero__cta')
+        div(id='can-petition-area-add-your-name-tax-the-rich')
+        div(data-node="disclaimer" class="disclaimer")
+
+  div(class='context')
+    div(class='container')
+      div(data-node="petition_intro")
+      div(data-list="petition_demands")
+
+  div(class='provisions')
+    div(class='container')
+      span(class="provisions__title") Introducing the <em>American Plutocracy Prevention Act &mdash;</em>
+      div(data-columns="act_provisions")
 
 block scripts
   script(src="js/app.js")

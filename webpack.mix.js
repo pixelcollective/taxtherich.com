@@ -1,11 +1,14 @@
 require('laravel-mix-stylelint')
 require('laravel-mix-eslint')
-let mix = require('laravel-mix')
-let glob = require('glob-all')
-let PurgecssPlugin = require('purgecss-webpack-plugin')
-mix.pug = require('laravel-mix-pug')
-
+const mix = require('laravel-mix')
+const glob = require('glob-all')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const imageminMozjpeg = require('imagemin-mozjpeg')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 const tailwindcss = require('tailwindcss')
+
+mix.pug = require('laravel-mix-pug')
 
 const config = {
   postCSS: {
@@ -24,10 +27,15 @@ const config = {
   },
 }
 
-// Custom PurgeCSS extractor for Tailwind that allows special characters in
-// class names.
-//
-// https://github.com/FullHuman/purgecss#extractor
+mix.setPublicPath('./dist')
+   .browserSync(config.browserSync)
+
+/**
+ * Custom PurgeCSS extractor for Tailwind that allows special characters in
+ * class names.
+ *
+ * https://github.com/FullHuman/purgecss#extractor
+ */
 class TailwindExtractor {
   static extract(content) {
     return content.match(/[A-Za-z0-9-_:\/]+/g) || []
@@ -52,11 +60,32 @@ if (mix.inProduction()) {
       })
     ]
   })
+
+  mix.webpackConfig({
+    plugins: [
+      new CopyWebpackPlugin([{
+        from: 'src/images/',
+        to: 'images/',
+      }]),
+      new ImageminPlugin({
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        pngquant: {
+            quality: '65-80'
+        },
+        plugins: [
+          imageminMozjpeg({
+            quality: 65,
+            maxmemory: 1000 * 512
+          })
+        ]
+      })
+    ],
+  })
 }
 
-mix.js('src/js/index.js', './dist/js/app.js')
-   .sass('./src/scss/main.scss', './dist/css/app.css')
-      .options(config.postCSS)
-   .pug('src/index.pug', './../dist')
-   .setPublicPath('./dist')
-   .browserSync(config.browserSync)
+mix
+  .copy('src/images', './dist/images')
+  .js('src/js/index.js', './dist/js/app.js')
+  .pug('src/index.pug', './../dist')
+  .sass('./src/scss/main.scss', './dist/css/app.css')
+    .options(config.postCSS)

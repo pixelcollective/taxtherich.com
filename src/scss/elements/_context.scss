@@ -1,0 +1,21 @@
+.context {
+  @apply bg-yellow-lightest shadow;
+
+  .container {
+    @apply mx-auto py-24 text-xl;
+
+    .salutations {
+      @apply block mb-8 text-3xl;
+    }
+
+    ul {
+      @apply mt-8 leading-normal list-reset;
+
+      li::before {
+        @apply relative pl-0 pr-4;
+
+        content: '❇️';
+      }
+    }
+  }
+}
