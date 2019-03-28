@@ -12,11 +12,11 @@
   }
 
   &__left {
-    @apply w-full;
+    @apply w-full pointer-events-none;
   }
 
   &__right {
-    @apply w-full py-12;
+    @apply w-full py-12 pointer-events-auto;
 
     .disclaimer {
       @apply mt-8 text-xs;
