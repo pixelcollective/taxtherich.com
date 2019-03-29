@@ -5,10 +5,10 @@
 wordpress_sites:
   taxtherich.com:
     site_hosts:
-      - canonical: staging.taxtherich.com
-    local_path: ../taxtherich.com # path targeting local Bedrock site directory (relative to Ansible root)
+      - canonical: api.taxtherich.com
+    local_path: ../api # path targeting local Bedrock site directory (relative to Ansible root)
     repo: git@github.com:pixelcollective/taxtherich.com.git # replace with your Git repo URL
-    repo_subtree_path: taxtherich.com # relative path to your Bedrock/WP directory in your repo
+    repo_subtree_path: api # relative path to your Bedrock/WP directory in your repo
     branch: development
     multisite:
       enabled: false
