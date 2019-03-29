@@ -6,9 +6,6 @@ web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 
-!web/app/mu-plugins/wp-stasis/
-!web/app/mu-plugins/eloquent/
-
 # WordPress
 web/wp
 web/.htaccess
@@ -23,3 +20,6 @@ web/.htaccess
 
 # WP-CLI
 wp-cli.local.yml
+
+!web/app/mu-plugins/wp-stasis
+!web/app/mu-plugins/eloquent
