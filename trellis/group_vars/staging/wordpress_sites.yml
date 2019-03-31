@@ -17,12 +17,5 @@ wordpress_sites:
       provider: letsencrypt
     cache:
       enabled: true
-    env:
-      APP_DEBUG: false,
-      APP_URL: https://api.taxtherich.com
-      AUTH_GUARD: nada
-      DB_PREFIX: wp
-      FILESYSTEM_DRIVER: spaces
-      FILESYSTEM_CLOUD: spaces
 
 
