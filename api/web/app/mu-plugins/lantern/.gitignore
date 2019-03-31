@@ -5,4 +5,9 @@ Homestead.yaml
 .env
 /dist
 /public
+/storage/framework/cache/*
+/storage/framework/views/*
+/logs/*
+/uploads/*
+/Users/*
 
