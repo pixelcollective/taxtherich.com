@@ -17,5 +17,15 @@ wordpress_sites:
       provider: letsencrypt
     cache:
       enabled: true
+    env:
+      APP_ENV: production
+      APP_DEBUG: false
+      APP_URL: https://api.taxtherich.com
+      AUTH_GUARD: nada
+      DB_PREFIX: wp
+      DB_HOST: localhost
+      DB_PORT: 3306
+      FILESYSTEM_DRIVER: spaces
+      FILESYSTEM_CLOUD: spaces
 
 
