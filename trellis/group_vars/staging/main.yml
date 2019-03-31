@@ -1,15 +1,15 @@
 mysql_root_password: "{{ vault_mysql_root_password }}" # Define this variable in group_vars/staging/vault.yml
 APP_KEY: "{{ APP_KEY }}"
 DB_PASSWORD: "{{ db_password }}"
-APP_ENV: production
-APP_DEBUG: false
-APP_URL: https://api.taxtherich.com
-AUTH_GUARD: nada
-DB_PREFIX: wp
-DB_HOST: localhost
-DB_PORT: 3306
-FILESYSTEM_DRIVER: spaces
-FILESYSTEM_CLOUD: spaces
+APP_ENV: "production"
+APP_DEBUG: "false"
+APP_URL: "https://api.taxtherich.com"
+AUTH_GUARD: "nada"
+DB_PREFIX: "wp"
+DB_HOST: "localhost"
+DB_PORT: "3306"
+FILESYSTEM_DRIVER: "spaces"
+FILESYSTEM_CLOUD: "spaces"
 DO_SPACES_KEY: "{{ DO_SPACES_KEY }}"
 DO_SPACES_SECRET: "{{ DO_SPACES_SECRET }}"
 DO_SPACES_ENDPOINT: "{{ DO_SPACES_ENDPOINT }}"
