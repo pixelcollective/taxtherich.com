@@ -5,7 +5,7 @@ namespace Lantern\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use \Carbon_Fields\Carbon_Fields;
-use \Lantern\WordPress\Containers\AppContainer;
+use \Lantern\WordPress\Containers;
 
 class CarbonFieldsServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,8 @@ class CarbonFieldsServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('carbon_fields_register_fields', function () {
-            (new AppContainer());
+            new Containers\AppContainer();
+            new Containers\LinkContainer();
         });
 
         add_action('after_setup_theme', function () {

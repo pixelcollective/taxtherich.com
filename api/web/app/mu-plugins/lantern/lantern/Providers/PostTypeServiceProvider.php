@@ -10,5 +10,6 @@ class PostTypeServiceProvider extends ServiceProvider
     public function register()
     {
         new PostTypes\AppPostType();
+        new PostTypes\LinkPostType();
     }
 }
