@@ -25,7 +25,7 @@ class APIController extends BaseController
             $res[$record['meta_key']] = $record['meta_value'];
         }
 
-        Storage::disk('spaces')->put("app-$id.json", response()->json($res, 200, [], JSON_UNESCAPED_UNICODE), 'public');
+        Storage::disk('spaces')->put("app-$id.json", json_encode($res), 'public');
 
         return response()->json($res, 200, [], JSON_UNESCAPED_UNICODE);
     }
