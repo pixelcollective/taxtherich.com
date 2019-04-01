@@ -8,7 +8,7 @@ use function \Sober\Intervention\intervention;
 class InterventionServiceProvider extends ServiceProvider
 {
     public $header = 'Tax The Rich';
-    public $content = 'Live site: https://taxtherich.com';
+    public $content = 'Current Development Build: <a href="https://dist-dlnfbronfb.now.sh/">https://dist-dlnfbronfb.now.sh/</a>';
 
     public function register()
     {
@@ -16,8 +16,9 @@ class InterventionServiceProvider extends ServiceProvider
             if (function_exists('\Sober\Intervention\intervention')) {
                 /** Toolbar */
                 intervention('remove-toolbar-items');
-                intervention('remove-howdy', 'You\'re absolutely beautiful!');
+                intervention('remove-howdy', '🚀');
                 intervention('add-dashboard-item', [$this->header, $this->content]);
+                intervention('remove-user-fields', 'all');
                 /** Admin Menu */
                 intervention('remove-menu-items', [
                     'posts',
@@ -45,7 +46,7 @@ class InterventionServiceProvider extends ServiceProvider
                 /** Footer */
                 intervention(
                     'update-label-footer',
-                    'Hey, thanks for building with <a href="https://tinypixel.dev">Tiny Pixel Tools</a>'
+                    'Thanks for building with <a href="https://tinypixel.dev">Tiny Pixel</a>'
                 );
 
                 /** Help Tabs */
