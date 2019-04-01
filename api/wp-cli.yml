@@ -1,1 +1,9 @@
+# site/wp-cli.yml
 path: web/wp
+
+@development:
+  ssh: vagrant@api.taxtherich.valet/srv/www/taxtherich.com/current
+@staging:
+  ssh: web@api.taxtherich.com/srv/www/taxtherich.com/current
+@production:
+  ssh: web@taxtherich.com/srv/www/taxtherich.com/current

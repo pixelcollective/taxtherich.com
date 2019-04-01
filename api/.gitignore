@@ -1,3 +1,6 @@
+# Database
+*.sql
+
 # Application
 web/app/plugins/*
 web/app/mu-plugins/*/
