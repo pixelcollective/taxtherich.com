@@ -13,7 +13,7 @@ class InterventionServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('plugins_loaded', function () {
-            if (function_exists('\Sober\Intervention\intervention')) {
+            if (function_exists('\Sober\Intervention\intervention') && is_admin()) {
                 /** Toolbar */
                 intervention('remove-toolbar-items');
                 intervention('remove-howdy', '🚀');
