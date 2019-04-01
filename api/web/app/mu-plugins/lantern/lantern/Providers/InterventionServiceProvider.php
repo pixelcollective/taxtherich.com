@@ -2,16 +2,14 @@
 
 namespace Lantern\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use function Sober\Intervention\intervention;
+use \Illuminate\Support\ServiceProvider;
+use function \Sober\Intervention\intervention;
 
 class InterventionServiceProvider extends ServiceProvider
 {
-    /**
-     * Employ \Sober\Intervention wp-admin cleanup services
-     *
-     * @return void
-     */
+    public $header = 'Tax The Rich';
+    public $content = 'Live site: https://taxtherich.com';
+
     public function register()
     {
         add_action('plugins_loaded', function () {
@@ -19,22 +17,27 @@ class InterventionServiceProvider extends ServiceProvider
                 /** Toolbar */
                 intervention('remove-toolbar-items');
                 intervention('remove-howdy', 'You\'re absolutely beautiful!');
-
+                intervention('add-dashboard-item', [$this->header, $this->content]);
                 /** Admin Menu */
-                intervention('remove-menu-items', 'posts', 'all');
-                intervention('remove-menu-items', 'pages', 'all');
-                intervention('remove-menu-items', 'comments', 'all');
-                intervention('remove-menu-items', 'themes', 'all');
-                intervention('remove-menu-items', 'tools', 'all');
-                intervention('remove-menu-items', 'settings', 'all');
-                intervention('remove-menu-items', 'plugins', 'all');
-                intervention('remove-menu-items', 'dashboard', 'all');
+                intervention('remove-menu-items', [
+                    'posts',
+                    'pages',
+                    'themes',
+                    'tools',
+                    'settings',
+                    'plugins',
+                    'dashboard',
+                    'comments',
+                ], ['editor', 'administrator', 'author', 'contributor']);
 
                 /** Update Notices */
                 intervention('remove-update-notices', 'all');
 
                 /** Dashboard Columns */
-                intervention('update-dashboard-columns', 0);
+                intervention('update-dashboard-columns', 1);
+
+                /** Remove User Roles */
+                intervention('remove-user-roles', ['subscriber', 'contributor']);
 
                 /** Widgets */
                 intervention('remove-widgets');
