@@ -12,5 +12,3 @@ use Illuminate\Support\Facades\Route;
 | and give it the Closure to call when that URI is requested.
 |
 */
-
-Route::get('/app/{id}', 'APIController@show');

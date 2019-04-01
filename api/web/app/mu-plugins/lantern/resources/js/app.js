@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import hello from './components/hello.vue'
+import entry from './components/entry.vue'
 
 new Vue({
     el: '#app',
     components: {
-        'hello': hello,
+        'entry': entry,
     }
 })

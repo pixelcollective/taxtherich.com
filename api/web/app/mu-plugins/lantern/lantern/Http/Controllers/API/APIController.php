@@ -26,7 +26,6 @@ class APIController extends BaseController
         }
 
         Storage::disk('spaces')->put("app-$id.json", json_encode($res), 'public');
-
-        return json_encode($res);
+        return View::make('app', ['res' => $res]);
     }
 }

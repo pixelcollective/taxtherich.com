@@ -8,7 +8,7 @@ use Lantern\Models\Post;
 
 class IndexController extends BaseController
 {
-    public function getIndex()
+    public function show()
     {
 
         $posts = Post::with(['author','meta'])

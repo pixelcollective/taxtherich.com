@@ -1,7 +1,5 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-    <div id="app">
-      <hello app='{{ $app->name }}'></hello>
-    </div>
+  <h1>Lantern Publishing Platform</h1>
 @endsection
