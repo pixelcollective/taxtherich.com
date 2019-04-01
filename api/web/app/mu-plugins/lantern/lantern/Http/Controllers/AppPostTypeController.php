@@ -24,7 +24,6 @@ class AppPostTypeController extends BaseController
             $this->collectAppData()
                  ->createAppDataArray()
                  ->createAppDataJSON()
-                 ->storeTo('local')
                  ->storeTo('spaces')
                  ->serve();
         } else {
