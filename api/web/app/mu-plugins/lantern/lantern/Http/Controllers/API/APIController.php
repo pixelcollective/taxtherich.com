@@ -27,6 +27,6 @@ class APIController extends BaseController
 
         Storage::disk('spaces')->put("app-$id.json", response()->json($res, 200, [], JSON_UNESCAPED_UNICODE), 'public');
 
-        return response()->json($res);
+        return response()->json($res, 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
