@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/app/{name}', 'AppPostTypeController@handle');
+Route::get('/microsite/{name}', 'AppPostTypeController@handle');
 Route::get('/link/{name}', 'LinkPostTypeController@handle');
 Route::get('/', 'IndexController@show');

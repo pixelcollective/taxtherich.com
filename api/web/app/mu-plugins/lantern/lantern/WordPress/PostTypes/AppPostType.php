@@ -23,11 +23,11 @@ class AppPostType
     public function __construct()
     {
         add_action('init', function () {
-            $app = Builder::make('app');
+            $app = Builder::make('microsite');
 
             $app->open()
-                ->oneIs('App')
-                ->manyAre('Apps')
+                ->oneIs('Microsite')
+                ->manyAre('Microsites')
                 ->set('menu_icon', 'dashicons-cloud')
                 ->set('show_in_rest', true)
                 ->register()

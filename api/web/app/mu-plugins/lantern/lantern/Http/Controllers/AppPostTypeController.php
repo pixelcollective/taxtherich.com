@@ -20,7 +20,7 @@ class AppPostTypeController extends BaseController
     {
         $this->appName = $name;
 
-        if (!is_null($this->appName)) {
+        if (($this->appName=='')) {
             $this->collectAppData()
                  ->createAppDataArray()
                  ->createAppDataJSON()
