@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'IndexController@show');
 Route::get('/posts', 'PostController@getAll');
 Route::get('/posts/published', 'PostController@getAllPublished');
-Route::get('/{name}', 'AppPostTypeController@handle');
+Route::get('/app/{name}', 'AppPostTypeController@handle');

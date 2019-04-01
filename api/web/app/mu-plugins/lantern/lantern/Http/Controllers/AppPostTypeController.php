@@ -32,11 +32,6 @@ class AppPostTypeController extends BaseController
         }
     }
 
-    public function sendHome()
-    {
-        app('view')->make('index');
-    }
-
     public function collectAppData()
     {
         $this->appData = $this->post::with('meta')
@@ -80,5 +75,10 @@ class AppPostTypeController extends BaseController
     public function serve()
     {
         print app('view')->make('apps.single', ['appData' => $this->appDataArray]);
+    }
+
+    public function sendHome()
+    {
+        app('view')->make('index');
     }
 }
