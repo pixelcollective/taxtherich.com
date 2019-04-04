@@ -73,7 +73,8 @@ class AppPostTypeController extends BaseController
 
     public function serve()
     {
-        print app('view')->make('apps.single', ['appData' => $this->appDataArray]);
+        return app('view')->make('apps.single', ['appData' => $this->appDataArray]);
+        die();
     }
 
     public function sendHome()

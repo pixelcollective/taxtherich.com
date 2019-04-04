@@ -1,0 +1,72 @@
+.logo {
+  @apply fixed w-16 z-10;
+
+  left: 1rem; top: 1rem;
+}
+
+.hero {
+  @apply focal bg-green font-sans flex-col justify-around content-center;
+
+  &__heading {
+    @apply tracking-wide text-4xl mb-2;
+  }
+
+  &__left {
+    @apply w-full pointer-events-none;
+  }
+
+  &__right {
+    @apply w-full pointer-events-auto;
+
+    .disclaimer {
+      @apply mt-8 text-xs;
+    }
+  }
+}
+
+@screen md {
+  .hero {
+    @apply flex-row p-12;
+
+    &__left {
+      .hero__layer {
+        @apply w-4/5 p-0 m-0;
+      }
+    }
+
+    &__right {
+      .hero__layer {
+        @apply w-3/5 float-right pr-12 pt-12 pb-12;
+      }
+
+      left: 0;
+    }
+  }
+}
+
+@screen sm {
+  .hero {
+    &__right {
+      @apply pt-6 pb-24;
+
+      max-width: 80%;
+      left: 50vw;
+      position: relative !important;
+    }
+  }
+}
+
+.moneybags {
+  @apply my-8;
+
+  path {
+    fill-opacity: 0;
+    fill: #032f03;
+    stroke: #062706;
+    opacity: 0;
+  }
+
+  @screen sm {
+    fill-opacity: 0 !important;
+  }
+}

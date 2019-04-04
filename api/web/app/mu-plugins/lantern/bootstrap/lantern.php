@@ -48,8 +48,8 @@ $lantern->singleton(
 | Collect configuration files from /config
 |
 */
-
 $lantern->register(Lantern\Providers\ConfigServiceProvider::class);
+$lantern->register(Lantern\Providers\AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +77,7 @@ $lantern->register(Lantern\Providers\PostTypeServiceProvider::class);
 $lantern->register(Lantern\Providers\PostServiceProvider::class);
 $lantern->register(Lantern\Providers\WordPressAssetsServiceProvider::class);
 $lantern->register(Lantern\Providers\ShortcodeServiceProvider::class);
+$lantern->register(Unicodeveloper\Emoji\EmojiServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -1,9 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <style>@stack('styles')</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{!! $app->title !!}</title>
+    <link rel="stylesheet" href="@public('css/app.css')" />
   </head>
   <body>
     @yield('content')
-    <script src="/app/mu-plugins/lantern/public/app.js"></script>
+    @yield('actionnetwork')
+    @stack('scripts')
   </body>
 </html>

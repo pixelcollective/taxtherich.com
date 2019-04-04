@@ -17,6 +17,7 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "silk/silk": "^0.12.1",
         "soberwp/intervention": "^1.2",
+        "unicodeveloper/laravel-emoji": "dev-master",
         "vlucas/phpdotenv": "^3.3"
     },
     "require-dev": {

@@ -1,9 +1,14 @@
-import Vue from 'vue'
-import entry from './components/entry.vue'
+import actionnetwork from './vanilla/action-network'
+import animations from './vanilla/animations'
+import moneybags from './vanilla/moneybags'
 
-new Vue({
-    el: '#app',
-    components: {
-        'entry': entry,
-    }
-})
+actionnetwork
+    .changeSubmitButtonText('Let \'er rip!')
+    .addFocusBorder()
+
+animations
+    .placeSVG('.hero__vector', moneybags)
+    .doParallax()
+    .runAnimation()
+
+doEmoji

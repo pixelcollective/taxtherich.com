@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/microsite/{name}', 'AppPostTypeController@handle');
-Route::get('/link/{name}', 'LinkPostTypeController@handle');
-Route::get('/', 'IndexController@show');
+Route::get('/microsite/{name}', 'LocalDisplayController@writeToDisksAndServeHTTP');
+Route::get('/', 'LocalDisplayController@writeToDisksAndServeHTTP');
