@@ -9,6 +9,5 @@ return [
     'routes' => [
         'fallback' => 'tax-the-rich',
     ],
-    'deploy_dir' => env('APP_URL') .'/app/uploads/lantern/public/',
-    'cdn_base'   => env('CDN_BASE')
+    'assets_url' => env('ASSETS_URL') .'/app/uploads/lantern/public/',
 ];

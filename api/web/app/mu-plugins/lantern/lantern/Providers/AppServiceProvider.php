@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('public', function ($expression) {
-            return "<?php echo config()['lantern']['deploy_dir'] . $expression; ?>";
+            return "<?php echo config()['lantern']['assets_url'] . $expression; ?>";
         });
 
         Blade::directive('emoji', function ($expression) {
