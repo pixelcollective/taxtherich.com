@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'public_url' => env('APP_URL') .'/public/',
     'wordpress' => [
         'version' => get_bloginfo('version'),
         'charset' => get_bloginfo('charset'),
@@ -10,4 +9,6 @@ return [
     'routes' => [
         'fallback' => 'tax-the-rich',
     ],
+    'deploy_dir' => env('APP_URL') .'/app/uploads/lantern/public/',
+    'cdn_base'   => env('CDN_BASE')
 ];

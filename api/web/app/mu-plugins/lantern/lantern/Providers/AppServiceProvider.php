@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('public', function ($expression) {
-            return "<?php echo '/app/mu-plugins/lantern/public/'. $expression; ?>";
+            return "<?php echo config()['lantern']['deploy_dir'] . $expression; ?>";
         });
 
         Blade::directive('emoji', function ($expression) {

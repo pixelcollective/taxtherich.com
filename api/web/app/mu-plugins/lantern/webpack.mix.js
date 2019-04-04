@@ -23,9 +23,10 @@ const config = {
       './public/**/*.js',
     ],
   },
+  uploadsDir: './../../uploads/lantern/public/',
 }
 
-mix.setPublicPath('./public')
+mix.setPublicPath(`${config.uploadsDir}`)
    .browserSync(config.browserSync)
 
 /**
@@ -63,7 +64,7 @@ if (mix.inProduction()) {
     plugins: [
       new CopyWebpackPlugin([{
         from: 'resources/images/',
-        to: '../public/images/',
+        to: '../../../uploads/lantern/public/images/',
       }]),
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -81,7 +82,7 @@ if (mix.inProduction()) {
   })
 }
 
-mix.js('resources/js/app.js', './public/js/app.js')
+mix.js('resources/js/app.js', `${config.uploadsDir}/js/app.js`)
 
-mix.sass('./resources/sass/main.scss', './public/css/app.css')
+mix.sass('./resources/sass/main.scss', `${config.uploadsDir}/css/app.css`)
    .options(config.postCSS)
