@@ -109,9 +109,9 @@ class LocalDisplayController extends Controller
         $this->repository = new GitRepository(config()['lantern']['git_repo']);
         // print_r($this->repository); die();
         if ($this->repository->hasChanges()) {
-            $this->repository->addAllChanges()
-                             ->commit('Automated deployment')
-                             ->push('origin master');
+            $this->repository->addAllChanges();
+            $this->repository->commit('Automated deployment');
+            $this->repository->push('origin master');
         }
     }
 }
