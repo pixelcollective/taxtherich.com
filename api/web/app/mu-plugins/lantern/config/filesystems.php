@@ -46,7 +46,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-            'url' => env('WP_HOME') .'/app/uploads/lantern'
+            'url' => env('WP_HOME') .'/app/uploads/lantern/public'
         ],
 
         's3' => [

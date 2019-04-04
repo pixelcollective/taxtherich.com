@@ -2,7 +2,10 @@
 
 namespace Lantern\Http\Controllers;
 
-class LocalDisplayController extends \Laravel\Lumen\Routing\Controller
+use \Laravel\Lumen\Routing\Controller;
+use \Cz\Git\GitRepository;
+
+class LocalDisplayController extends Controller
 {
     private $post;
 
@@ -32,6 +35,7 @@ class LocalDisplayController extends \Laravel\Lumen\Routing\Controller
 
         $this->writeToDisk('local')
              ->writeToDisk('spaces')
+             ->commitToGit()
              ->serveResponse();
     }
 
@@ -75,8 +79,9 @@ class LocalDisplayController extends \Laravel\Lumen\Routing\Controller
      */
     public function writeToDisk($disk)
     {
+        $file_path = ($disk == 'local') ?? 'public/';
         app('storage')::disk($disk)->put(
-            $this->name .'.html',
+            $file_path . $this->name .'.html',
             $this->view,
             'public'
         );
@@ -94,5 +99,19 @@ class LocalDisplayController extends \Laravel\Lumen\Routing\Controller
     public function serveResponse()
     {
         echo $this->view;
+    }
+
+    /**
+     * Commit to VCS
+     */
+    public function commitToGit()
+    {
+        $this->repository = new GitRepository(config()['lantern']['git_repo']);
+        // print_r($this->repository); die();
+        if ($this->repository->hasChanges()) {
+            $this->repository->addAllChanges()
+                             ->commit('Automated deployment')
+                             ->push('master');
+        }
     }
 }

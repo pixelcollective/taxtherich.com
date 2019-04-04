@@ -4,6 +4,7 @@ namespace Lantern\Http\Controllers;
 
 use \Lantern\Models\Post;
 use \Laravel\Lumen\Routing\Controller as BaseController;
+use \Cz\Git\GitRepository;
 
 class LinkPostTypeController extends BaseController
 {
