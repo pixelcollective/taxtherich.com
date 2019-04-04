@@ -111,7 +111,7 @@ class LocalDisplayController extends Controller
         if ($this->repository->hasChanges()) {
             $this->repository->addAllChanges()
                              ->commit('Automated deployment')
-                             ->push('master');
+                             ->push('origin master');
         }
     }
 }
