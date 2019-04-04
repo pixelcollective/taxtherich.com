@@ -3,7 +3,6 @@
 namespace Lantern\Http\Controllers;
 
 use \Laravel\Lumen\Routing\Controller;
-use \Cz\Git\GitRepository;
 
 class LocalDisplayController extends Controller
 {
@@ -33,9 +32,9 @@ class LocalDisplayController extends Controller
             'app' => (object) $this->retrieveViewData($this->name = $name)
         ]);
 
-        $this->writeToDisk('local')
-             ->writeToDisk('spaces')
-             ->commitToGit()
+        $this->writeToLocalDisk()
+             ->replaceBaseURL()
+             ->writeToCloudDisk('spaces')
              ->serveResponse();
     }
 
@@ -74,17 +73,59 @@ class LocalDisplayController extends Controller
      *
      * Writes response object to local and remote disks
      *
-     * @param  string $disk identifies desired disk ('local', 'spaces', ...)
      * @return self
      */
-    public function writeToDisk($disk)
+    public function writeToLocalDisk()
     {
-        $file_path = ($disk == 'local') ?? 'public/';
-        app('storage')::disk($disk)->put(
-            $file_path . $this->name .'.html',
+        app('storage')::disk('local')->put(
+            '/public/'. $this->name .'.html',
             $this->view,
             'public'
         );
+
+        return $this;
+    }
+
+        /**
+     * writeToDisk
+     *
+     * Writes response object to local and remote disks
+     *
+     * @param  string $disk identifies desired disk ('local', 'spaces', ...)
+     * @return self
+     */
+    public function writeToCloudDisk($disk)
+    {
+        app('storage')::disk($disk)->put(
+            'css/app.css',
+            file_get_contents(config()['app']['url'] .'/app/mu-plugins/lantern/public/css/app.css'),
+            'public'
+        );
+
+        app('storage')::disk($disk)->put(
+            'js/app.js',
+            file_get_contents(config()['app']['url'] .'/app/mu-plugins/lantern/public/js/app.js'),
+            'public'
+        );
+
+        app('storage')::disk($disk)->put(
+            'images/tax-the-rich.png',
+            file_get_contents(config()['app']['url'] .'/app/mu-plugins/lantern/public/images/tax-the-rich.png'),
+            'public'
+        );
+
+        app('storage')::disk($disk)->put(
+            $this->name .'.html',
+            $this->cdn_view,
+            'public'
+        );
+
+        return $this;
+    }
+
+    public function replaceBaseURL()
+    {
+        $this->cdn_view = str_replace('/app/uploads/lantern/public/', '/', $this->view);
 
         return $this;
     }
@@ -99,19 +140,5 @@ class LocalDisplayController extends Controller
     public function serveResponse()
     {
         echo $this->view;
-    }
-
-    /**
-     * Commit to VCS
-     */
-    public function commitToGit()
-    {
-        $this->repository = new GitRepository(config()['lantern']['git_repo']);
-        // print_r($this->repository); die();
-        if ($this->repository->hasChanges()) {
-            $this->repository->addAllChanges();
-            $this->repository->commit('Automated deployment');
-            $this->repository->push('origin', ['master', '-u']);
-        }
     }
 }

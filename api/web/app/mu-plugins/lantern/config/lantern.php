@@ -10,5 +10,4 @@ return [
         'fallback' => 'tax-the-rich',
     ],
     'assets_url' => env('ASSETS_URL') .'/app/uploads/lantern/public/',
-    'git_repo'   => storage_path('app')
 ];

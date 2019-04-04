@@ -86,3 +86,7 @@ mix.js('resources/js/app.js', `${config.uploadsDir}/js/app.js`)
 
 mix.sass('./resources/sass/main.scss', `${config.uploadsDir}/css/app.css`)
    .options(config.postCSS)
+
+mix.copy(`${config.uploadsDir}/js/app.js`, './public/js/app.js')
+   .copy(`${config.uploadsDir}/css/app.css`, './public/css/app.css')
+   .copy(`${config.uploadsDir}/images/`, './public/images/')
