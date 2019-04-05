@@ -35,5 +35,5 @@ collections:
       - { label: "Section Two Column Two Heading", name: "section_two_column_two_heading", widget: "string", required: true, default: "" }
       - { label: "Section Two Column Two Content", name: "section_two_column_two_content", widget: "markdown", required: true, default: "" }
       - { label: "Section Two Column Three Heading", name: "section_two_column_three_heading", widget: "string", required: true, default: "" }
-      - { label: "Section Two Column Three Content", name: "section_two_column_three_heading", widget: "markdown", required: true, default: "" }
+      - { label: "Section Two Column Three Content", name: "section_two_column_three_content", widget: "markdown", required: true, default: "" }
 
