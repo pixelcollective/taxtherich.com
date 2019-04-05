@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: pixelcollective/taxtherich.com
   branch: static # Branch to update (optional; defaults to master)
 display_url: https://static.taxtherich.com
 
