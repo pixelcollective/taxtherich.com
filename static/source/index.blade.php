@@ -3,7 +3,7 @@
 @section('content')
   @foreach ($posts as $post)
     <div class="brand">
-      <img src="assets/images/tax-the-rich.png" class="logo" alt="{!! $post->heading !!}" title="{!! $post->heading !!}" />
+      <img src="assets/build/images/tax-the-rich.png" class="logo" alt="{!! $post->heading !!}" title="{!! $post->heading !!}" />
     </div>
     @include('_components.hero')
     @include('_components.context')
