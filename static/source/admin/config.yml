@@ -4,8 +4,8 @@ backend:
 display_url: https://static.taxtherich.com
 
 publish_mode: editorial_workflow
-media_folder: "source/assets/images"
-public_folder: "assets/images/uploads"
+media_folder: "source/assets/build/images"
+public_folder: "assets/build/images/uploads"
 logo_url: https://tinypixel.io/app/uploads/2019/03/tiny-pixel-horizontal-small-black.png
 show_preview_links: true
 
