@@ -27,5 +27,10 @@ section_two_column_two_content: >-
   on wealth over $50 million, with a 3 percent rate on wealth over $1 billion.
   This tax would generate $3 trillion in revenue over the next decade.
 section_two_column_three_heading: Strengthen the Estate Tax to Prevent Wealth Dynasties.
+section_two_column_three_content: >-
+  Proposed by Senator Sanders, this would close loopholes in the current estate
+  tax and adds a graduated rate, with a 77 percent rate on estates over $1
+  billion. This is America's only levy on the inherited wealth of
+  multi-millionaires and billionaires.
 ---
 
