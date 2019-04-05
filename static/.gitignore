@@ -1,6 +1,6 @@
 /build_local/
-/build_staging/
-/build_production/
+/build_staging/*
+/build_production/*
 /node_modules/
 /source/assets/build/css/
 /source/assets/build/fonts/

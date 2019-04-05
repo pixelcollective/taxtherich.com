@@ -2,12 +2,10 @@
 
 return [
     'production' => false,
-    'baseUrl' => 'https://taxtherich.com',
+    'baseUrl' => 'https://static.taxtherich.com',
     'site' => [
-        'title' => 'My Jigsaw Blog',
+        'title' => 'Tax The Rich',
         'subtitle' => 'Personal blog of John Doe.',
-        'disclaimer' => 'Yada yada yada.',
-        'image' => 'default-share.png',
     ],
     'owner' => [
         'name' => 'John Doe',
