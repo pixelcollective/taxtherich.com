@@ -9,14 +9,6 @@
     <link href="config.yml" type="text/yaml" rel="cms-config-url">
 </head>
 <body>
-    @foreach ($posts as $post)
-    <div class="brand">
-      <img src="assets/build/images/tax-the-rich.png" class="logo" alt="{!! $post->heading !!}" title="{!! $post->heading !!}" />
-    </div>
-    @include('_components.hero')
-    @include('_components.context')
-    @include('_components.provisions')
-  @endforeach
   <script src="https://unpkg.com/netlify-cms@2.9.0/dist/netlify-cms.js"></script>
 </body>
 </html>
