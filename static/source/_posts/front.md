@@ -15,7 +15,7 @@ section_one_content: >-
 section_one_li_one: ✅ Restore the top income tax rate to 70%
 section_one_li_two: ✅ Levy an Annual Wealth Tax on the Ultra-Rich
 section_one_li_three: ✅ Strengthen the estate tax to prevent wealth dynasties
-section_two_heading: Introducing the American Plutocracy Prevention Act —
+section_two_heading: Introducing the American Plutocracy Prevention Act
 section_two_column_one_heading: Restore the Top Income Tax Rate to 70 Percent on Incomes Over $10 million.
 section_two_column_one_content: >-
   Proposed by Congresswoman Alexandria Ocasio-Cortez, this would return the
