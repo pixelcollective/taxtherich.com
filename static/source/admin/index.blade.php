@@ -17,5 +17,6 @@
     @include('_components.context')
     @include('_components.provisions')
   @endforeach
+  <script src="https://unpkg.com/netlify-cms@2.9.0/dist/netlify-cms.js"></script>
 </body>
 </html>
