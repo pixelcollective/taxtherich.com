@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'production' => false,
+    'production' => true,
     'baseUrl' => 'https://static.taxtherich.com',
     'site' => [
         'title' => 'Tax The Rich',
