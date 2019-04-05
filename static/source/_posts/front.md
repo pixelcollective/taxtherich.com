@@ -1,17 +1,36 @@
 ---
-heading: Custom 404 Pages
-subheading: This is a subheading
-disclaimer: Add a custom 404 page is easy with Jigsaw
-section_one_heading: Section one heading
-section_one_content: Section one content! Wow!
-section_one_li_one: List item one
-section_one_li_two: List item two
-section_one_li_three: List item three
-section_two_heading: Section two heading
-section_two_column_one_heading: Section two column one heading
-section_two_column_one_content: Section two column one tons of content tons of fuuuuuuuuu-n
-section_two_column_two_heading: Section two column two heading
-section_two_column_two_content: Section two needs a column content block to prove to me that it exists
-section_two_column_three_heading: HEADS UP SECTION 2 UP
-section_two_columN_three_content: I dunno about the rhyming thing going on right now...
+heading: Join the fight to Tax The Rich!
+subheading: Because they have almost all the money.
+disclaimer: >-
+  By signing this petition you agree to allow Patriotic Millionaires to send
+  communications on your behalf to elected representatives and corporate
+  powerholders demanding changes in US policy. You may also receive important
+  updates about this campaign in your inbox, no more than once a week.
+section_one_heading: 'Dear Democratic Leaders:'
+section_one_content: >-
+  America's extreme wealth inequality now threatens our freedom and democracy.
+  We respectfully demand that you launch a comprehensive legislative offensive
+  to tax the rich. Specifically we want an American Plutocracy Prevention Act
+  with 3 main pillars:
+section_one_li_one: ✅ Restore the top income tax rate to 70%
+section_one_li_two: ✅ Levy an Annual Wealth Tax on the Ultra-Rich
+section_one_li_three: ✅ Strengthen the estate tax to prevent wealth dynasties
+section_two_heading: Introducing the American Plutocracy Prevention Act —
+section_two_column_one_heading: Restore the Top Income Tax Rate to 70 Percent on Incomes Over $10 million.
+section_two_column_one_content: >-
+  Proposed by Congresswoman Alexandria Ocasio-Cortez, this would return the
+  income tax to it previous progressivity under Republican President Dwight
+  Eisenhower.
+section_two_column_two_heading: Levy an Annual Wealth Tax on the Super-Rich.
+section_two_column_two_content: >-
+  Proposed by Senator Warren this would levy an annual wealth tax of 2 percent
+  on wealth over $50 million, with a 3 percent rate on wealth over $1 billion.
+  This tax would generate $3 trillion in revenue over the next decade.
+section_two_column_three_heading: Strengthen the Estate Tax to Prevent Wealth Dynasties.
+section_two_column_three_content: >-
+  Proposed by Senator Sanders, this would close loopholes in the current estate
+  tax and adds a graduated rate, with a 77 percent rate on estates over $1
+  billion. This is America's only levy on the inherited wealth of
+  multi-millionaires and billionaires.
 ---
+
