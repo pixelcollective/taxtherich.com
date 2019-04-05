@@ -1,5 +1,5 @@
 [build]
-
+base    = "static"
 command = "yarn production"
 publish = "static/build_production"
 environment = { PHP_VERSION = "7.2" }
