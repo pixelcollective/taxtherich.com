@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
                     \Unicodeveloper\Emoji\Facades\Emoji::findByAlias($expression)
                 .'</span>'; ?>";
         });
+
+        include __DIR__ .'/../Directives/Directives.php';
     }
     /**
      * Register any application services.

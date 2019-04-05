@@ -37,6 +37,7 @@
     "fs": "^0.0.1-security",
     "knockout": "^3.5.0",
     "mithril": "^2.0.0-rc.4",
+    "netlify-cms": "^2.9.0",
     "parallax-js": "^3.1.0",
     "plates": "^0.4.11",
     "scaleapp": "^0.4.4",

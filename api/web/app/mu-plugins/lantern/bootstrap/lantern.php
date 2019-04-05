@@ -61,7 +61,8 @@ $lantern->register(Lantern\Providers\AppServiceProvider::class);
 */
 
 // $lantern->register(Lantern\Providers\AdminPageServiceProvider::class);
-$lantern->register(Lantern\Providers\CarbonFieldsServiceProvider::class);
+// $lantern->register(Lantern\Providers\CarbonFieldsServiceProvider::class);
+$lantern->register(Lantern\Providers\AdvancedCustomFieldsServiceProvider::class);
 $lantern->register(Lantern\Providers\InterventionServiceProvider::class);
 
 /*

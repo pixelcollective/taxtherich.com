@@ -1,0 +1,22 @@
+/* purgecss start ignore */
+input {
+  @apply relative overflow-hidden;
+
+  ~ .focus-border {
+    @apply absolute w-64;
+
+    background-color: #006400;
+    transition: 0.4s;
+    height: 0.1rem;
+  }
+
+  &:focus ~ .focus-border {
+    @apply w-64 bg-white;
+
+    transform: translateY(-0.05rem);
+    transition:
+      width 0.4s
+      transform none;
+  }
+}
+/* purgecss stop ignore */

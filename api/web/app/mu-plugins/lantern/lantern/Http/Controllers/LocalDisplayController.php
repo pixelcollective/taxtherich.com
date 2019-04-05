@@ -2,9 +2,9 @@
 
 namespace Lantern\Http\Controllers;
 
-use \Laravel\Lumen\Routing\Controller;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
-class LocalDisplayController extends Controller
+class LocalDisplayController extends BaseController
 {
     private $post;
 
@@ -53,17 +53,39 @@ class LocalDisplayController extends Controller
                     ->published()
                     ->get()
                     ->pluck('meta')
-                    ->flatten();
+                    ->flatten()
+                    ->toArray();
 
-        return $this->formatResponseData($data);
+        $links = $this->post::with('meta')
+                    ->where('post_type', 'link')
+                    ->published()
+                    ->get()
+                    ->flatten()
+                    ->toArray();
+
+        $response = [
+            'content' => $this->formatResponseData($data),
+            'links'   => $links,
+        ];
+        print "<pre>";
+        print_r($response);
+        print "</pre>";
+        return $this->formatResponseData($response);
     }
 
     public function formatResponseData($data)
     {
-        foreach ($data->toArray() as $record) {
-            $record['meta_key'] = ltrim($record['meta_key'], '_');
-            $formattedData[$record['meta_key']] = $record['meta_value'];
+        $formattedData = [];
+        foreach ($data as $record) {
+            if (array_key_exists('meta_key', $record)) {
+                $record['meta_key'] = ltrim($record['meta_key'], '_');
+                $formattedData[$record['meta_key']] = $record['meta_value'];
+            }
         }
+
+        print "<pre>";
+        print_r($formattedData);
+        print "</pre>";
 
         return $formattedData;
     }

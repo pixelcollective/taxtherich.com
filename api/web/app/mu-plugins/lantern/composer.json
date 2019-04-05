@@ -10,14 +10,28 @@
         "wordpress"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://wpackagist.org"
+        },
+        {
+          "type": "composer",
+          "url": "https://packages.tinypixel.io/satispress/"
+        }
+    ],
     "require": {
         "php": ">=7.1.3",
+        "corcel/acf": "^1.1",
         "czproject/git-php": "^3.17",
         "htmlburger/carbon-fields": "^3.0",
         "laravel/lumen-framework": "5.8.*",
         "league/flysystem-aws-s3-v3": "^1.0",
         "silk/silk": "^0.12.1",
         "soberwp/intervention": "^1.2",
+        "stoutlogic/acf-builder": "^1.8",
+        "tiny-packagist/acf-fields": "^1.0.1",
+        "tiny-packagist/advanced-custom-fields-pro": "^5.7.7",
         "unicodeveloper/laravel-emoji": "dev-master",
         "vlucas/phpdotenv": "^3.3"
     },
@@ -33,7 +47,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "Lantern\\": "lantern/"
+            "Lantern\\": ["lantern/", "src/"],
+            "Corcel\\Acf\\": "lantern/"
         }
     },
     "autoload-dev": {
@@ -45,6 +60,13 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
+    },
+    "extra": {
+        "installer-paths": {
+          "vendor/{$name}/": [
+            "type:wordpress-plugin"
+          ]
+        }
     },
     "config": {
         "optimize-autoloader": true,

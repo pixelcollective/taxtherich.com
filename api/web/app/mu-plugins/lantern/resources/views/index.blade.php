@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+  <pre> @php print_r($app) @endphp </pre>
+{{--
   @include('components.brand')
   @include('components.hero')
   @include('components.context')
   @include('components.provisions')
+--}}
 @endsection
 
 @push('scripts')
