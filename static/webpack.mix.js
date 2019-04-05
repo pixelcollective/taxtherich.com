@@ -25,7 +25,7 @@ mix.js('source/_assets/js/app.js', 'js')
         extensions: ['html', 'md', 'js', 'php', 'vue'],
         folders: ['source'],
         whitelist: ['can_embed'],
-        whitelistPatterns: [/language/, /hljs/],
+        whitelistPatterns: [/language/, /hljs/, /elements/, /components/, app.scss,],
     })
     .copy('source/_assets/images/tax-the-rich.png', 'images/tax-the-rich.png')
     .version();
