@@ -5,8 +5,8 @@ backend:
 display_url: https://static.taxtherich.com
 
 publish_mode: editorial_workflow
-media_folder: "source/assets/build/images"
-public_folder: "assets/build/images/uploads"
+media_folder: "static/source/assets/build/images"
+public_folder: "static/source/assets/build/images"
 logo_url: https://tinypixel.io/app/uploads/2019/03/tiny-pixel-horizontal-small-black.png
 show_preview_links: true
 
@@ -14,11 +14,11 @@ collections:
   - name: "posts"
     label: "Posts"
     label_singular: "Post"
-    description: Posts
-    folder: "source/_posts"
+    folder: "static/source/_posts"
     slug: "{{slug}}"
     extension: "md"
-    create: false
+    format: "yaml-frontmatter"
+    create: true
     identifier_field: "heading"
     fields:
       - { label: "Heading", name: "heading", widget: "string", required: true, default: "" }
