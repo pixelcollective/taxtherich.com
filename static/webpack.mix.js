@@ -24,6 +24,7 @@ mix.js('source/_assets/js/app.js', 'js')
     .purgeCss({
         extensions: ['html', 'md', 'js', 'php', 'vue'],
         folders: ['source'],
+        whitelist: ['can_embed'],
         whitelistPatterns: [/language/, /hljs/],
     })
     .copy('source/_assets/images/tax-the-rich.png', 'images/tax-the-rich.png')
