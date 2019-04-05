@@ -24,8 +24,8 @@ mix.js('source/_assets/js/app.js', 'js')
     .purgeCss({
         extensions: ['html', 'md', 'js', 'php', 'vue'],
         folders: ['source'],
-        whitelist: ['can_embed'],
-        whitelistPatterns: [/language/, /hljs/, /elements/, /components/, app.scss,],
+        whitelist: ['can_embed', 'petition', 'action_info_user', 'international_link-wrap', 'country_drop_wrap', 'form-comments', 'input[name="commit"]' ],
+        whitelistPatterns: [/language/, /hljs/, /elements/, /components/],
     })
     .copy('source/_assets/images/tax-the-rich.png', 'images/tax-the-rich.png')
     .version();

@@ -7,7 +7,7 @@ display_url: https://static.taxtherich.com
 publish_mode: editorial_workflow
 media_folder: "static/source/assets/build/images"
 public_folder: "static/source/assets/build/images"
-logo_url: https://tinypixel.io/app/uploads/2019/03/tiny-pixel-horizontal-small-black.png
+logo_url: https://tinypixel.io/app/uploads/2018/10/tinypixel-slack2-1.jpg
 show_preview_links: true
 
 collections:
@@ -18,7 +18,7 @@ collections:
     slug: "{{slug}}"
     extension: "md"
     format: "yaml-frontmatter"
-    create: true
+    create: false
     identifier_field: "heading"
     fields:
       - { label: "Heading", name: "heading", widget: "string", required: true, default: "" }
