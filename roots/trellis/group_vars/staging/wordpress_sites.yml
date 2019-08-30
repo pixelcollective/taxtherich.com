@@ -1,0 +1,15 @@
+wordpress_sites:
+  example.com:
+    site_hosts:
+      - canonical: staging.example.com
+    local_path: ../bedrock
+    repo: git@github.com:pixelcollective/example.com.git
+    repo_subtree_path: bedrock
+    branch: master
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: letsencrypt
+    cache:
+      enabled: false

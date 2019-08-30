@@ -1,0 +1,9 @@
+html,
+body {
+  @apply bg-black;
+}
+
+* {
+  @apply text-white;
+  @apply font-sans;
+}
