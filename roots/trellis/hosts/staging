@@ -1,5 +1,5 @@
 [staging]
-your_server_hostname
+staging.data.tinypixel.dev
 
 [web]
-your_server_hostname
+staging.data.tinypixel.dev
