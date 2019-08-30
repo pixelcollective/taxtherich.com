@@ -1,7 +1,0 @@
-api.taxtherich.com ansible_host=142.93.21.156
-
-[staging]
-api.taxtherich.com
-
-[web]
-api.taxtherich.com

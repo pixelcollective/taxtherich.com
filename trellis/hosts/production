@@ -1,7 +1,0 @@
-taxtherich.com ansible_host=xxx.xx.xx.xxx
-
-[production]
-taxtherich.com
-
-[web]
-taxtherich.com
