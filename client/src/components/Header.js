@@ -9,7 +9,10 @@ import {
 import { motion } from 'framer-motion'
 
 const Header = ({ heading, subheading }) => (
-  <Box pt={[3, 5]} bg={`dark`} color={`hsl(0, 0, 13%)`}>
+  <Box
+    pt={[3, 5]}
+    bg={`dark`}
+    color={`hsl(0, 0, 13%)`}>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -18,7 +21,10 @@ const Header = ({ heading, subheading }) => (
         delay: 0,
         duration: 1
       }}>
-      <Heading as='h1' fontSize={[5, 7]} mb={2}>
+      <Heading
+        as='h1'
+        fontSize={[5, 7]}
+        mb={2}>
         {heading}
       </Heading>
     </motion.div>
@@ -35,7 +41,9 @@ const Header = ({ heading, subheading }) => (
         fontSize={[3, 5]}
         fontWeight={['normal']}
         color={`hsl(0, 0, 3%)`}
-        dangerouslySetInnerHTML={{ __html: subheading }} />
+        dangerouslySetInnerHTML={{
+          __html: subheading,
+        }} />
     </motion.div>
   </Box>
 )

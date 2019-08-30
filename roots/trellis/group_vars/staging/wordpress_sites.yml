@@ -1,15 +1,15 @@
 wordpress_sites:
-  example.com:
+  staging.taxtherich.data.tinypixel.dev:
     site_hosts:
-      - canonical: staging.example.com
+      - canonical: staging.taxtherich.data.tinypixel.dev
     local_path: ../bedrock
-    repo: git@github.com:pixelcollective/example.com.git
-    repo_subtree_path: bedrock
+    repo: git@github.com:pixelcollective/taxtherich.com
+    repo_subtree_path: roots/bedrock
     branch: master
     multisite:
-      enabled: false
+      enabled: true
     ssl:
-      enabled: false
+      enabled: true
       provider: letsencrypt
     cache:
       enabled: false

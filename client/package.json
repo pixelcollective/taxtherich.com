@@ -13,6 +13,7 @@
     "graphql": "^14.5.3",
     "polished": "^3.4.1",
     "react": "^16.9.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "react-scrollbars-custom": "^4.0.18",
