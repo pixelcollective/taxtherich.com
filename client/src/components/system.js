@@ -1,3 +1,4 @@
+// react
 import React from 'react'
 
 // @rebass
@@ -9,10 +10,8 @@ import {
   Flex,
 } from 'rebass'
 
-import {
-  motion,
-  AnimatePresence,
-} from 'framer-motion'
+// @framer-motion
+import { motion, AnimatePresence } from 'framer-motion'
 
 /**
  * Loading

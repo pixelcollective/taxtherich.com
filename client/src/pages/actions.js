@@ -1,10 +1,25 @@
+// @react
 import React, { useState } from 'react'
+
+// @redux
+import { useDispatch } from 'react-redux'
+
+// @apollo
 import { useQuery } from '@apollo/react-hooks'
+
+// @rebass
 import { Box, Text, Button } from 'rebass'
+
+// @framer-motion
 import { motion } from  'framer-motion'
+
+// @styled-components
 import styled from 'styled-components'
+
+// Components
 import Grid from './../components/Grid'
 import { Loading, Error } from './../components/system'
+import { COLOR } from '../store/reducers/color'
 
 const scriptUrl = `https://actionnetwork.org/widgets/v3/petition/tax-jeff-bezos?format=js&source=widget`
 
@@ -80,7 +95,7 @@ const ActionArea = styled.div`
 
 const Actions = ({actions}) => {
   const [active, setActive] = useState(``)
-
+  const dispatch = useDispatch()
   const { data, loading, error } = useQuery(actions)
   console.log(data)
   const render =
@@ -108,9 +123,20 @@ const Actions = ({actions}) => {
                 overflowY: `hidden`,
                 overflowX: `hidden`,
               }}
-              whileHover={{
-                backgroundColor: design.colorPrimary ? design.colorPrimary : `rgba(255, 255, 255, 1)`,
-                cursor: active===`action_${i}` ? `arrow` : `pointer`
+              whileHover={() => {
+                console.log(design.colorSecondary)
+
+                dispatch({
+                  type: `color`,
+                  color: {
+                    primary: design.colorPrimary,
+                    secondary: design.colorSecondary,
+                  }
+                })
+                return ({
+                  backgroundColor: design.colorPrimary ? design.colorPrimary : `rgba(255, 255, 255, 1)`,
+                  cursor: active===`action_${i}` ? `arrow` : `pointer`
+                })
               }}
               animate={(active === `action_${i}`) ? {
                 opacity: 1,
@@ -177,7 +203,7 @@ const Actions = ({actions}) => {
                 display={`inline-block`}
                 m={[5]}
                 lineHeight={[1]}
-                maxWidth={active===`action_${i}` && [`80%`]}
+                maxWidth={active === `action_${i}` ? [`80vw`] : [`80vw`]}
                 maxHeight={active === `action_${i}` ? `none` : `50vh`}
                 overflowY={active===`action_${i}` && `hidden`}
                 fontSize={[6]}
