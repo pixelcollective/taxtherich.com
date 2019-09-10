@@ -1,10 +1,9 @@
 /**
  * Modules
  */
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Box } from 'rebass'
-import { motion } from 'framer-motion'
 
 /**
  * Application components
@@ -66,7 +65,7 @@ const ActionLayout = ({gql}) => {
               <FadeUp>
                 <About
                   hover={design.colorPrimary}
-                  image={affiliation.company.logo.guid}
+                  image={affiliation.company.logo && affiliation.company.logo.guid}
                   color={design.colorPrimary}
                   html={action.context} />
               </FadeUp>
