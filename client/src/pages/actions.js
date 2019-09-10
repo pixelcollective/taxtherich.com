@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { Box, Text, Button, Image } from 'rebass'
+import { Box, Text, Button } from 'rebass'
 import { motion } from  'framer-motion'
 import styled from 'styled-components'
 import Grid from './../components/Grid'
 import { Loading, Error } from './../components/system'
-import Mnuchin from './../art/mnuchin'
+
 const scriptUrl = `https://actionnetwork.org/widgets/v3/petition/tax-jeff-bezos?format=js&source=widget`
 
 const loadDynamicScript = () => {
-  const existingScript = document.getElementById('actionNetwork');
-
   const script = document.createElement('script')
   script.src = scriptUrl
   script.id  = `actionNetwork`
@@ -23,6 +21,10 @@ const ActionArea = styled.div`
   #can_embed_form_inner {
     #form_col1 {
       width: 100%;
+
+      #action_welcome_message_inner {
+        color: black;
+      }
     }
 
     #form_col2 {
@@ -78,13 +80,14 @@ const ActionArea = styled.div`
 
 const Actions = ({actions}) => {
   const [active, setActive] = useState(``)
+
   const { data, loading, error } = useQuery(actions)
   console.log(data)
   const render =
     loading ? <Loading /> :
     error   ? <Error />   :
     data    ? (
-      <Grid pt={[3, 5]}>
+      <Grid max={[`50%`]} minWidth={[`100%`]}>
         {data.actions.edges.map(({ node: {
           action: {
             profile,
@@ -99,13 +102,14 @@ const Actions = ({actions}) => {
               initial={{
                 opacity: 0,
                 zIndex: 1,
-                overflow: `hidden`,
-                backgroundColor: `rgba(40, 156, 255, 0.95)`,
+                backgroundColor: design.colorSecondary ? design.colorSecondary : `rgba(255, 255, 255, 0.95)`,
                 minHeight: `50vh`,
                 maxHeight: `50vh`,
+                overflowY: `hidden`,
+                overflowX: `hidden`,
               }}
               whileHover={{
-                backgroundColor: `rgba(40, 156, 255, 1)`,
+                backgroundColor: design.colorPrimary ? design.colorPrimary : `rgba(255, 255, 255, 1)`,
                 cursor: active===`action_${i}` ? `arrow` : `pointer`
               }}
               animate={(active === `action_${i}`) ? {
@@ -118,19 +122,23 @@ const Actions = ({actions}) => {
                 bottom: 0,
                 top: 0,
                 zIndex: 100,
-                paddingTop: `20%`,
                 transformOrigin: `center`,
                 overflowY: `scroll`,
+                backgroundColor: design.colorSecondary ? design.colorSecondary : `rgba(255, 255, 255, 1)`,
               } : (active === ``) ? {
                 position: `relative`,
+                overflowY: `hidden`,
                 maxHeight: `50vh`,
-                paddingTop: 0,
+                zIndex: 100,
                 opacity: 1,
               } : {
-                paddingTop: 0,
+                overflowY: `hidden`,
+                maxHeight: `50vh`,
                 opacity: 0,
                 position: `absolute`,
+                zIndex: -100,
                 perspective: Math.floor(Math.random() * 16) + 5,
+                scrollPosition: `top`,
               }}
               onTap={!(active === `action_${i}`) ? () => {
                 setActive(`action_${i}`)
@@ -143,19 +151,22 @@ const Actions = ({actions}) => {
                 src={profile.headshot.guid}
                 initial={{
                   position: (!active===`action_${i}`) ? `fixed` : `absolute`,
-                  zIndex: -1000,
+                  zIndex: -100,
                   minHeight: `100%`,
-                  maxHeight: `100%`,
-                  overflowY: `hidden`,
+                  maxHeight: `106%`,
                   opacity: 0.1,
                   top: 0,
                   left: 0,
-                  right: 0,
-                  bottom: 0,
                   objectFit: `cover`,
                   minWidth: `100vw`,
+                  height: (active === `action_${i}`) && `100vh`,
+                  width: (active === `action_${i}`) && `110vw`,
+                  scale: 1.2,
                 }}
-                animate={{scale: (active===`action_${i}`) ? 1.1 : 1.2}}
+                animate={{
+                  scale: (active===`action_${i}`) ? 1.1 : 1.2,
+                  opacity: (active === `action_${i}`) ? 0.1 : 0.1,
+                }}
                 transition={{
                   type: `spring`,
                   stiffness: 100,
@@ -167,6 +178,8 @@ const Actions = ({actions}) => {
                 m={[5]}
                 lineHeight={[1]}
                 maxWidth={active===`action_${i}` && [`80%`]}
+                maxHeight={active === `action_${i}` ? `none` : `50vh`}
+                overflowY={active===`action_${i}` && `hidden`}
                 fontSize={[6]}
                 position={`relative`}
                 fontWeight={[`800`]}>
@@ -174,7 +187,7 @@ const Actions = ({actions}) => {
                     className="box"
                     initial={(active === `action_${i}`)
                       ? { scale:  1, }
-                      : { scale: 0.8 }
+                      : { scale: 1 }
                       && {
                         type: `spring`,
                         stiffness: 1,
@@ -185,6 +198,7 @@ const Actions = ({actions}) => {
                     color={`white`}
                     fontSize={[5]}
                     my={[4]}
+                    mt={[3]}
                     dangerouslySetInnerHTML={{__html: page.subheading}} />
                   <Grid>
                     <motion.div
@@ -215,24 +229,14 @@ const Actions = ({actions}) => {
                             color={`black`}
                             backgroundColor={`white`}
                             fontSize={[2]}>
-                            <motion.div onTapStart={() => active===`action_${i}` && setActive(``)}>
+                            <motion.div onClick={() => {
+                              active===`action_${i}` && setActive(``)
+                            }}>
                               Return
                             </motion.div>
                           </Button>
                         </Box>
                       </motion.div>
-                    </motion.div>
-                    <motion.div
-                      initial={{position: `fixed`, bottom: `0em`, right: 0, opacity: 0}}
-                      animate={active===`action_${i}`
-                        ? { opacity: 1}
-                        : { opacity: 0}
-                      }
-                      transition={active===`action_${i}`
-                        ? { transition: 0 }
-                        : { transition: 0.4 }
-                      }>
-                      <Mnuchin />
                     </motion.div>
                 </Grid>
               </Text>
