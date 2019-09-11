@@ -1,7 +1,7 @@
 const initialState = {
   color: {
     primary: `#CFCFCF`,
-    secondary: `#000000`,
+    secondary: `#FFFFFF`,
   },
 }
 

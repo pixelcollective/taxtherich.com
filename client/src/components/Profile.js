@@ -43,9 +43,7 @@ const Profile = ({name, email, company, position, about, srcSet, color}) => {
               position: `relative`,
               top: `-40%`,
             }}
-            animate={{
-              scale: 0.8,
-            }}
+            animate={{ scale: 0.8 }}
             transition={{
               duration: 50,
             }}>

@@ -109,8 +109,7 @@ class CallToAction extends Component {
               height: `100%`,
             }}>
             {isClicked() && (function() {
-              !scriptLoaded && loadDynamicScript()
-
+              loadDynamicScript()
               return (
                 <Box>
                   <Text style={{

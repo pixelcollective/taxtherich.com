@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 // @redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // @apollo
 import { useQuery } from '@apollo/react-hooks'
@@ -16,19 +16,12 @@ import { motion } from  'framer-motion'
 // @styled-components
 import styled from 'styled-components'
 
+// polished
+import { darken, complement, lighten } from 'polished'
+
 // Components
 import Grid from './../components/Grid'
 import { Loading, Error } from './../components/system'
-import { COLOR } from '../store/reducers/color'
-
-const scriptUrl = `https://actionnetwork.org/widgets/v3/petition/tax-jeff-bezos?format=js&source=widget`
-
-const loadDynamicScript = () => {
-  const script = document.createElement('script')
-  script.src = scriptUrl
-  script.id  = `actionNetwork`
-  document.body.appendChild(script)
-}
 
 const ActionArea = styled.div`
   max-width: 500px;
@@ -93,11 +86,49 @@ const ActionArea = styled.div`
   }
 `
 
+const loadScript = (id) => {
+  const scripts = document.querySelectorAll(`#actionNetwork-${id}`)
+
+  if(scripts.length <= 0) {
+    const script = document.createElement('script')
+    script.src = `https://actionnetwork.org/widgets/v3/petition/${id}?format=js&source=widget`
+    script.id = `actionNetwork-${id}`
+
+    document.body.appendChild(script)
+
+    return script.id
+  }
+}
+
+const removeScript = id => {
+  const scripts = document.querySelectorAll(`#actionNetwork-${id}`)
+
+  scripts.forEach(script => {
+    console.log(`removing ${script}`)
+    script.parentNode.removeChild(script)
+  })
+}
+
 const Actions = ({actions}) => {
   const [active, setActive] = useState(``)
-  const dispatch = useDispatch()
   const { data, loading, error } = useQuery(actions)
-  console.log(data)
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.action)
+
+  if (state.action.requested===true && state.action.loaded === false) {
+    loadScript(state.action.id)
+  } else if (state.action.requested===false && state.action.loaded===true) {
+    removeScript(state.action.id)
+    dispatch({
+      type: `action`,
+      payload: {
+        id: ``,
+        loaded: false,
+        requested: false,
+      }
+    })
+  }
+
   const render =
     loading ? <Loading /> :
     error   ? <Error />   :
@@ -108,7 +139,6 @@ const Actions = ({actions}) => {
             profile,
             design,
             action,
-            affiliation,
             page,
           },
         }}, i) => (
@@ -117,15 +147,15 @@ const Actions = ({actions}) => {
               initial={{
                 opacity: 0,
                 zIndex: 1,
-                backgroundColor: design.colorSecondary ? design.colorSecondary : `rgba(255, 255, 255, 0.95)`,
+                backgroundColor: design.colorSecondary
+                  ? design.colorSecondary
+                  : `rgba(255, 255, 255, 0.95)`,
                 minHeight: `50vh`,
                 maxHeight: `50vh`,
                 overflowY: `hidden`,
                 overflowX: `hidden`,
               }}
               whileHover={() => {
-                console.log(design.colorSecondary)
-
                 dispatch({
                   type: `color`,
                   color: {
@@ -134,8 +164,12 @@ const Actions = ({actions}) => {
                   }
                 })
                 return ({
-                  backgroundColor: design.colorPrimary ? design.colorPrimary : `rgba(255, 255, 255, 1)`,
-                  cursor: active===`action_${i}` ? `arrow` : `pointer`
+                  backgroundColor: design.colorSecondary
+                    ? darken(0.1, complement(design.colorSecondary))
+                    : `rgba(255, 255, 255, 1)`,
+                  cursor: active===`action_${i}`
+                    ? `arrow`
+                    : `pointer`
                 })
               }}
               animate={(active === `action_${i}`) ? {
@@ -150,7 +184,6 @@ const Actions = ({actions}) => {
                 zIndex: 100,
                 transformOrigin: `center`,
                 overflowY: `scroll`,
-                backgroundColor: design.colorSecondary ? design.colorSecondary : `rgba(255, 255, 255, 1)`,
               } : (active === ``) ? {
                 position: `relative`,
                 overflowY: `hidden`,
@@ -163,12 +196,18 @@ const Actions = ({actions}) => {
                 opacity: 0,
                 position: `absolute`,
                 zIndex: -100,
-                perspective: Math.floor(Math.random() * 16) + 5,
                 scrollPosition: `top`,
               }}
               onTap={!(active === `action_${i}`) ? () => {
+                dispatch({
+                  type: `action`,
+                  payload: {
+                    id: action.actionNetworkId,
+                    loaded: false,
+                    requested: true,
+                  }
+                })
                 setActive(`action_${i}`)
-                loadDynamicScript()
               } : () => {
                 return null
               }}
@@ -211,15 +250,18 @@ const Actions = ({actions}) => {
                 fontWeight={[`800`]}>
                   <motion.div
                     className="box"
-                    initial={(active === `action_${i}`)
-                      ? { scale:  1, }
-                      : { scale: 1 }
-                      && {
-                        type: `spring`,
-                        stiffness: 1,
-                        duration: 1
-                      }
-                    } dangerouslySetInnerHTML={{__html: page.heading}} />
+                    initial={
+                      active === `action_${i}`
+                        ? { scale:  1, }
+                        : { scale: 1 }
+                        && {
+                          type: `spring`,
+                          stiffness: 1,
+                          duration: 1,
+                          color: lighten(0.3, complement(design.colorSecondary)),
+                        }
+                    }
+                    dangerouslySetInnerHTML={{__html: page.heading}} />
                   <Text
                     color={`white`}
                     fontSize={[5]}
@@ -239,9 +281,9 @@ const Actions = ({actions}) => {
                         : { opacity: 0, height: 0 }
                       }
                       transition={{duration: 0.2}}>
-                      <Text mb={[4]} dangerouslySetInnerHTML={{__html: action.petition.petition}}/>
+                      <Text mb={[4]} dangerouslySetInnerHTML={{__html: action.petition}}/>
                       <motion.div initial={{transformOrigin: `center`, display: `inline`}}>
-                        <ActionArea id={`can-petition-area-tax-jeff-bezos`} />
+                        <ActionArea id={`can-petition-area-${action.actionNetworkId}`} />
                         <Box mt={[4]}>
                           <Button
                             style={{
@@ -256,7 +298,11 @@ const Actions = ({actions}) => {
                             backgroundColor={`white`}
                             fontSize={[2]}>
                             <motion.div onClick={() => {
-                              active===`action_${i}` && setActive(``)
+                              setActive(``)
+                              dispatch({
+                                type: `action`,
+                                payload: { id: action.actionNetworkId, loaded: true, requested: false }
+                              })
                             }}>
                               Return
                             </motion.div>
