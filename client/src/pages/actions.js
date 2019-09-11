@@ -64,12 +64,12 @@ const Actions = ({actions}) => {
     dispatch({
       type: `action`,
       payload: {
-        id: action.actionNetworkId,
+        id: actionNetworkId,
         loaded: false,
         requested: true,
       }
     })
-    setCurrentAction(action.actionNetworkId)
+    setCurrentAction(actionNetworkId)
   }
 
   const closeAction = actionNetworkId => {
@@ -156,7 +156,7 @@ const Actions = ({actions}) => {
                     scrollPosition: `top`,
                   }
                 }
-                onTap={currentAction(action.actionNetworkId)}
+                onTap={() => openAction(action.actionNetworkId)}
                 transition={{duration: 0.2}}>
                 <motion.img
                   src={profile.headshot.guid}
