@@ -112,13 +112,21 @@ const Actions = ({actions}) => {
                   overflowX: `hidden`,
                 }}
                 whileHover={() => {
+                  console.log(design.paths)
+
                   dispatch({
                     type: `color`,
                     color: {
                       primary: design.colorPrimary,
                       secondary: design.colorSecondary,
-                    }
+                    },
                   })
+
+                  dispatch({
+                    type: `paths`,
+                    paths: design.paths,
+                  })
+
                   return ({
                     backgroundColor: design.colorSecondary
                       ? darken(0.1, complement(design.colorSecondary))
@@ -159,7 +167,7 @@ const Actions = ({actions}) => {
                 onTap={() => openAction(action.actionNetworkId)}
                 transition={{duration: 0.2}}>
                 <motion.img
-                  src={profile.headshot.guid}
+                  src={page.featuredImage && page.featuredImage.guid}
                   initial={{
                     position: !currentAction===action.actionNetworkId ? `fixed` : `absolute`,
                     zIndex: -100,
@@ -223,7 +231,8 @@ const Actions = ({actions}) => {
                     <ActionContent
                       actionText={action.petition}
                       actionId={action.actionNetworkId}
-                      handleClose={closeAction} />
+                      handleClose={closeAction}
+                      paths={design.paths && design.paths} />
                     </motion.div>
                 </Box>
               </motion.div>

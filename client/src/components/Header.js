@@ -12,19 +12,20 @@ import { complement } from 'polished'
 
 // @rebass
 import { Box, Heading } from 'rebass'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Vector } from './../art'
 
 // components
 import Grid from './Grid'
 
 const HeaderBox = styled(Box)`
-  background: ${(props) => complement(props.color)};
+  background: ${props => props.color};
   transition: background-color 0.2s ease-in-out;
   border-bottom: 1px solid white;
 `
 
 const Title = styled(Heading)`
-  color: ${(props) => complement(props.color)};
+  color: ${(props) => props.color};
   transition: color 0.2s ease-in-out;
   font-size: 4rem;
   font-weight: 900;
@@ -35,10 +36,33 @@ const Title = styled(Heading)`
 // exports
 const Header = ({heading, subheading}) => {
   const { color } = useSelector(state => state.color)
+  const { paths } = useSelector(state => state.paths)
+
+  const colorPairing = complement(color.secondary)
+
+  /*   const renderProfile = alias => {
+    switch (alias) {
+      case 'wilber': {
+        return (<Wilber color={colorPairing} />)
+      }
+      case 'betsy': {
+        return (<Betsy color={colorPairing} />)
+      }
+      case 'mnuchin': {
+        return (<Mnuchin color={colorPairing} />)
+      }
+
+      default: {
+        return null
+      }
+    }
+  } */
+
+  console.log(paths)
 
   return (
-    <Grid>
-      <HeaderBox pt={[1, 0]} color={`#0F0F0F`}>
+    <HeaderBox pt={[1, 0]} color={`#0F0F0F`}>
+      <Grid>
         <Box p={[5]} color={`white`}>
           <motion.div
             initial={{opacity: 0}}
@@ -51,7 +75,7 @@ const Header = ({heading, subheading}) => {
               fontWeight={[900]}
               fontSize={[7]}
               mb={2}
-              color={color.secondary ? color.secondary : `white`}
+              color={colorPairing ? colorPairing : `white`}
               dangerouslySetInnerHTML={{__html: heading}} />
           </motion.div>
           <motion.div
@@ -71,8 +95,11 @@ const Header = ({heading, subheading}) => {
               dangerouslySetInnerHTML={{__html: subheading}} />
           </motion.div>
         </Box>
-      </HeaderBox>
-    </Grid>
+        <Box>
+          <Vector paths={paths} color={colorPairing ? colorPairing : `white`} />
+        </Box>
+      </Grid>
+    </HeaderBox>
   )
 }
 

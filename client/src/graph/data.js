@@ -25,14 +25,11 @@ const data = {
               profile {
                 name
                 about
-                headshot {
-                  guid
-                  srcSet
-                }
               }
               design {
                 colorPrimary
                 colorSecondary
+                paths
               }
             }
           }
