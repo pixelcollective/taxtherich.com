@@ -14,6 +14,18 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 
 /**
+ * Grid
+ */
+const Grid = (props) => (
+  <Box {...props}
+    sx={{
+      display: 'grid',
+      gridGap: [2, 4],
+      gridTemplateColumns: `repeat(auto-fit, minmax(256px, 1fr))`,
+    }} />
+)
+
+/**
  * Loading
  */
 const Loading = props => (
@@ -67,18 +79,6 @@ const Error = props => (
       </Card>
     </Flex>
   </motion.div>
-)
-
-/**
- * Grid
- */
-const Grid = (props) => (
-  <Box {...props}
-    sx={{
-      display: 'grid',
-      gridGap: [2, 4],
-      gridTemplateColumns: `repeat(auto-fit, minmax(256px, 1fr))`,
-    }} />
 )
 
 /**

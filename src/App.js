@@ -14,7 +14,7 @@ import theme from './theme'
 
 // components
 import Header from './components/Header'
-import Actions from './pages/actions'
+import Home from './pages/home'
 
 // stylesheet
 import './global.css'
@@ -32,7 +32,7 @@ const App = () => (
             subheading={`It's time to finally pay your share.`}
             background={`#F4F4F4`}
             color={`#333333`} />
-          <Actions actions={data.actions} />
+          <Home actions={data.actions} />
         </>
       </ThemeProvider>
     </GraphQLProvider>

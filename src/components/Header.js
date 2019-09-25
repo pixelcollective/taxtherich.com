@@ -40,28 +40,8 @@ const Header = ({heading, subheading}) => {
 
   const colorPairing = complement(color.secondary)
 
-  /*   const renderProfile = alias => {
-    switch (alias) {
-      case 'wilber': {
-        return (<Wilber color={colorPairing} />)
-      }
-      case 'betsy': {
-        return (<Betsy color={colorPairing} />)
-      }
-      case 'mnuchin': {
-        return (<Mnuchin color={colorPairing} />)
-      }
-
-      default: {
-        return null
-      }
-    }
-  } */
-
-  console.log(paths)
-
   return (
-    <HeaderBox pt={[1, 0]} color={`#0F0F0F`}>
+    <HeaderBox pt={[1, 0]} color={`#0F0F0F`} style={{ position: `relative`, zIndex: 1000 }}>
       <Grid>
         <Box p={[5]} color={`white`}>
           <motion.div
