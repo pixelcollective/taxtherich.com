@@ -124,14 +124,14 @@ const Actions = ({ actions }) => {
                 right: 0,
                 bottom: 0,
                 top: 0,
-                zIndex: 100,
+                zIndex: 102,
                 transformOrigin: `center`,
                 overflowY: `scroll`,
               } : currentAction === `` ? {
                 position: `relative`,
                 overflowY: `hidden`,
                 maxHeight: `50vh`,
-                zIndex: 100,
+                zIndex: 102,
                 opacity: 1,
               } : {
                 overflowY: `hidden`,

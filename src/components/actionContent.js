@@ -59,11 +59,10 @@ const ActionArea = styled.div`
       input {
         background: transparent;
         border: none;
-        border-bottom: 2px solid white;
-        color: white;
+        border-bottom: 2px solid ${props => props.light ? `rgba(0, 0, 0, 0.8)` : `white`};
 
         &::placeholder {
-          color: rgba(255, 255, 255, 0.5);
+          color: ${props => props.light ? `rgba(0, 0, 0, 0.8)` : `white`};
         }
 
         &.error_input {
@@ -80,7 +79,7 @@ const ActionContent = ({
   handleClose,
   actionText,
   actionId,
-  openAction,
+  light,
 }) => {
   return (
   <Grid>
@@ -88,28 +87,32 @@ const ActionContent = ({
       initial={{
         position: `relative`,
         fontSize: `16px`,
-        color: `white`,
+        color: light ? `black` : `white`,
       }}
       transition={{ duration: 0.2 }}>
-      <Text mb={[4]} dangerouslySetInnerHTML={{__html: actionText}} />
-      <motion.div initial={{transformOrigin: `center`, display: `inline`}}>
-        <ActionArea id={`can-petition-area-${actionId}`} />
-        <Box mt={[4]} onClick={() => handleClose(actionId)}>
-          <Button
-            style={{
-              fontSize: `1em`,
-              cursor: `pointer`,
-              textDecoration: `none`,
-              position: `relative`,
-              overflow: `hidden`
-            }}
-            ml={[2]}
-            color={`black`}
-            backgroundColor={`white`}
-            fontSize={[2]}>
-            Return
-          </Button>
-        </Box>
+      {actionText && (
+        <Text mb={[4]} dangerouslySetInnerHTML={{__html: actionText}} />
+      )}
+        <motion.div initial={{transformOrigin: `center`}}>
+        <ActionArea width={`100%`} light={light ? true : false} id={`can-petition-area-${actionId}`} />
+        {handleClose && (
+          <Box mt={[4]} onClick={() => handleClose(actionId)}>
+            <Button
+              style={{
+                fontSize: `1em`,
+                cursor: `pointer`,
+                textDecoration: `none`,
+                position: `relative`,
+                overflow: `hidden`
+              }}
+              ml={[2]}
+              color={`black`}
+              backgroundColor={`white`}
+              fontSize={[2]}>
+              Return
+            </Button>
+          </Box>
+        )}
       </motion.div>
     </motion.div>
   </Grid>
