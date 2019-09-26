@@ -53,10 +53,10 @@ const Header = ({heading, subheading}) => {
             exit={{opacity: 0}}
             transition={{delay: 0, duration: 1}}>
             <Title
-              as='h1'
+              as='h3'
               fontFamily={[`sans-serif`]}
               fontWeight={[900]}
-              fontSize={[5]}
+              style={{fontSize: `3rem`}}
               mb={2}
               color={`black`}
               dangerouslySetInnerHTML={{__html: heading}} />
@@ -79,7 +79,9 @@ const Header = ({heading, subheading}) => {
           </motion.div>
         </Box>
         <Box>
-          <Vector paths={paths} color={colorPairing ? colorPairing : `black`} />
+          <div style={{height: `100%`, position: `relative`, bottom: `-15%`}}>
+            <Vector paths={paths} color={colorPairing ? colorPairing : `black`} />
+          </div>
         </Box>
       </Grid>
     </HeaderBox>
