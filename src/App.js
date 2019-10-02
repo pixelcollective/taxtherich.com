@@ -5,6 +5,14 @@ import React from 'react'
 import { Provider as Redux } from 'react-redux'
 import store from './store'
 
+// @react-router
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+
 // @styled-components
 import { ThemeProvider } from 'styled-components'
 
@@ -13,17 +21,20 @@ import { GraphQLProvider, data } from './graph'
 import theme from './theme'
 
 // antd
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, Icon } from 'antd'
 
-// components
-import Home from './pages/home'
+// @app/components
+import Footer from './components/Footer'
+
+// @app/views
+import { Home, TakeAction, Villains, Page } from './pages'
 
 // stylesheet
 import './global.css'
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 // destructuring
-const { Header , Content} = Layout
+const { Header } = Layout
 
 /**
  * Exports
@@ -32,23 +43,64 @@ const App = () => (
   <Redux store={store}>
     <GraphQLProvider>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Header style={{ position: `fixed`, zIndex: 101, width: `100%` }}>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={['2']}
-              style={{ lineHeight: '64px' }}>
-              <Menu.Item key="0" style={{color: `white`, textTransform: `uppercase`, letterSpacing: `0.2ch`, fontWeight: 700}}>Tax The Rich</Menu.Item>
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu>
-          </Header>
-          <Content style={{marginTop: `64px`}}>
-            <Home actions={data.actions} />
-          </Content>
-        </Layout>
+        <Router>
+          <Layout className="layout">
+            <Header style={{ zIndex: 101 }}>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['2']}
+                style={{
+                  lineHeight: `64px`,
+                  color: `white`,
+                  textTransform: `uppercase`,
+                  letterSpacing: `0.2ch`,
+                  fontWeight: 700
+                }}>
+                <Menu.Item key="0">
+                  <Link to={`/`}><Icon type="notification" /> Tax The Rich</Link>
+                </Menu.Item>
+                <Menu.Item key="1" style={{
+                  color: `white`,
+                  textTransform: `uppercase`,
+                  fontWeight: 300
+                }}>
+                  <Link to={`/take-action`}>Take Action</Link>
+                </Menu.Item>
+                <Menu.Item key="2" style={{
+                  color: `white`,
+                  textTransform: `uppercase`,
+                  fontWeight: 300
+                }}>
+                  <Link to={`/villains`}>Villains</Link>
+                </Menu.Item>
+                <Menu.Item key="3" style={{
+                  color: `white`,
+                  textTransform: `uppercase`,
+                  fontWeight: 300
+                }}>
+                  <Link to={`/about`}>About</Link>
+                </Menu.Item>
+              </Menu>
+            </Header>
+            <Switch>
+              <Route path="/take-action">
+                <TakeAction actions={data.takeAction} />
+              </Route>
+              <Route path="/villains">
+                <Villains actions={data.home} />
+              </Route>
+              <Route path="/:slug" component={Page} />
+              <Route path={'/'}>
+                <Home actions={data.home} />
+              </Route>
+            </Switch>
+            <Footer
+              heading={`Tax the Rich`}
+              background={`#F4F4F4`}
+              color={`#333333`} />
+          </Layout>
+        </Router>
       </ThemeProvider>
     </GraphQLProvider>
   </Redux>

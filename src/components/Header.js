@@ -12,7 +12,7 @@ import { complement } from 'polished'
 
 // @rebass
 import { Box, Heading } from 'rebass'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Vector } from './../art'
 
 // components

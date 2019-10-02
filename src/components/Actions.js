@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 // @apollo
 import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 
 // @rebass
 import { Box, Text } from 'rebass'
@@ -26,7 +27,43 @@ import { Loading, Error } from './system'
 
 
 const Actions = ({ actions }) => {
-  const { data, loading, error } = useQuery(actions)
+  const { data, loading, error } = useQuery(gql`
+    {
+      actions {
+        edges {
+          node {
+            id
+            action {
+              page {
+                heading
+                subheading
+                featuredImage {
+                  guid
+                  srcSet
+                }
+              }
+              action {
+                actionNetworkId
+                heading
+                context
+              }
+              profile {
+                name
+                about
+              }
+              design {
+                colorPrimary
+                colorSecondary
+                paths
+              }
+            }
+          }
+        }
+      }
+    }
+  `
+  )
+
   const [currentAction, setCurrentAction] = useState(``)
   const dispatch = useDispatch()
   const state = useSelector(state => state.action)

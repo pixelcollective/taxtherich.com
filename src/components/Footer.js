@@ -49,19 +49,16 @@ const Header = ({ heading }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ delay: 0, duration: 1 }}>
-          <Title
-            as='h1'
-            fontFamily={[`sans-serif`]}
-            fontWeight={[900]}
-            fontSize={[7]}
-            mb={2}
-            color={colorPairing ? colorPairing : `white`}
-            dangerouslySetInnerHTML={{ __html: heading }} />
-
-          <Text fontSize={[3]} mb={[3]} color={`white`}>
+          <Text fontSize={[4]} mb={[3]} color={`white`} style={{
+            textTransform: `uppercase`,
+            letterSpacing: `0.2ch`,
+            fontWeight: 900}}>
+            {heading}
+          </Text>
+          <Text fontSize={[3]} mb={[4]} color={`white`}>
             Tax the Rich is an initiative to raise awareness and build a lasting base to press American politicians to make appreciable change in our rules and regulations regarding the tax "burden" of the richest 1% of the richest 1% of all Americans.
           </Text>
-          <Text fontSize={[3]} color={`white`}>
+          <Text fontSize={[2]} color={`white`}>
             &copy; <span dangerouslySetInnerHTML={{ __html: (new Date()).getFullYear() }} />&nbsp;
             Patriotic Millionaires and Other98
           </Text>
