@@ -1,7 +1,7 @@
-// react
+// @react
 import React from 'react'
 
-// redux
+// @redux
 import { Provider as Redux } from 'react-redux'
 import store from './store'
 
@@ -16,21 +16,31 @@ import {
 // @styled-components
 import { ThemeProvider } from 'styled-components'
 
-// providers
-import { GraphQLProvider, data } from './graph'
+// @apollo
+import {
+  GraphQLProvider,
+  data
+} from './graph'
+
 import theme from './theme'
 
-// antd
-import { Layout, Menu, Icon } from 'antd'
+// @antd
+import {
+  Layout,
+  Menu,
+  Icon
+} from 'antd'
 
 // @app/components
 import Footer from './components/Footer'
 
 // @app/views
-import { Home, TakeAction, Villains, Page } from './pages'
+import Home from './pages/Home'
+import TakeAction from './pages/TakeAction'
+import Villains from './pages/Villains'
+import Page from './pages/Page'
 
-// stylesheet
-import './global.css'
+// @app/styles
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 // destructuring
