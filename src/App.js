@@ -68,7 +68,9 @@ const App = () => (
                   fontWeight: 700
                 }}>
                 <Menu.Item key="0">
-                  <Link to={`/`}><Icon type="notification" /> Tax The Rich</Link>
+                  <Link to={`/`}>
+                    <Icon type="notification" /> Tax The Rich
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="1" style={{
                   color: `white`,

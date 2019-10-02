@@ -1,6 +1,9 @@
 // @react
 import React from 'react'
 
+// @react-helmet
+import { Helmet } from 'react-helmet'
+
 // components
 import Header  from '../components/Header'
 import Action  from '../components/Action'
@@ -19,6 +22,10 @@ const Home = ({actions, primary}) => (
       background={`#F4F4F4`}
       color={`#333333`} />
     <Actions actions={actions} />
+    <Helmet>
+      <title>The Villainous Rich</title>
+      <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
+    </Helmet>
   </>
 )
 

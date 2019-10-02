@@ -1,6 +1,9 @@
 // @react
 import React from 'react'
 
+// @react-helmet
+import { Helmet } from 'react-helmet'
+
 // @apollo
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -76,6 +79,11 @@ const Page = () => {
           <Divider />
         </Typography>
       </Content>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={excerpt} />
+        <meta name="og:image" content={featuredImage.guid} />
+      </Helmet>
     </div>
   )) : null
 }
