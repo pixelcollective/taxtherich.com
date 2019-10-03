@@ -1,8 +1,8 @@
 // @react
-import React, { Profiler } from 'react'
+import React from 'react'
 
 // @rebass
-import { Box, Text, Image } from 'rebass'
+import { Box, Image } from 'rebass'
 
 // @framer-motion
 import { motion } from 'framer-motion'
@@ -11,12 +11,10 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 // @antd
-import { Row, Col, Typography } from 'antd'
+import { Row, Col } from 'antd'
 
 // @app/components
 import PageHeader from './../header/PageHeader'
-
-const { Title } = Typography
 
 const VillainArea = styled.div`
   max-width: 500px;
