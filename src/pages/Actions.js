@@ -5,9 +5,20 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
+// @react-helmet
+import { Helmet } from 'react-helmet'
+
+// @rebass
+import { Box } from 'rebass'
+
 // @antd
 import { Row, Col } from 'antd'
+
+import PageHeader from './../components/header/PageHeader'
+import { IndexedAction as Action } from '../components/action/IndexedAction'
 import { Loading, Error } from './../components/Loaders'
+
+
 
 // exports
 const Actions = ({ heading }) => {
@@ -39,11 +50,21 @@ const Actions = ({ heading }) => {
   `)
 
   const render = loading ? <Loading /> : error ? <Error /> : data ? (
-    <Row>
+    <Box style={{ padding: `50px` }}>
+      <PageHeader
+        title={`Tax The Rich`}
+        disabledBack={true}
+        excerpt={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
       {data.actions.edges.map(({ node: { action: { design, action, page } } }) => (
-        <Col>{action.heading}</Col>
+        <Col>
+          <Action action={action} />
+        </Col>
       ))}
-    </Row>
+      <Helmet>
+        <title>The Villainous Rich</title>
+        <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
+      </Helmet>
+    </Box>
   ) : null
 
   return render

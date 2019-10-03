@@ -13,7 +13,7 @@ import { complement } from 'polished'
 // @rebass
 import { Box, Heading } from 'rebass'
 import { motion } from 'framer-motion'
-import { Vector } from './../art'
+import { Vector } from './../../art'
 
 // @antd
 import { Row, Col } from 'antd'
@@ -34,15 +34,13 @@ const Title = styled(Heading)`
 `
 
 // exports
-const Header = ({heading, subheading}) => {
+const Header = ({ heading, subheading }) => {
   const { color } = useSelector(state => state.color)
   const { paths } = useSelector(state => state.paths)
   const colorPairing = complement(color.secondary)
 
   return (
     <HeaderBox
-      pt={[1, 0]}
-      mx={[5]}
       color={`#0F0F0F`}
       style={{
         backgroundColor: `#f0f0f0`,
@@ -50,25 +48,25 @@ const Header = ({heading, subheading}) => {
         position: `relative`
       }}>
       <Row gutter={48}>
-        <Col sm={24} md={12} style={{marginBottom: `4em`}}>
+        <Col sm={24} md={12} style={{ marginBottom: `4em` }}>
           <motion.div
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-            transition={{delay: 0, duration: 1}}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0, duration: 1 }}>
             <Title
               as='h3'
               fontFamily={[`sans-serif`]}
               fontWeight={[900]}
-              style={{fontSize: `3rem`}}
+              style={{ fontSize: `3rem` }}
               mb={2}
               color={`black`}
-              dangerouslySetInnerHTML={{__html: heading}} />
+              dangerouslySetInnerHTML={{ __html: heading }} />
           </motion.div>
           <motion.div
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{
               delay: 0.2,
               duration: 2,
@@ -79,12 +77,19 @@ const Header = ({heading, subheading}) => {
               fontWeight={['normal']}
               fontFamily={[`sans-serif`]}
               color={`black`}
-              dangerouslySetInnerHTML={{__html: subheading}} />
+              dangerouslySetInnerHTML={{ __html: subheading }} />
           </motion.div>
         </Col>
-        <Col sm={24} md={12} style={{position: `relative`, height: `100%`}}>
-          <div style={{height: `100%`, width: `100%`, position: `absolute`, bottom: `-3rem`}}>
-            <Vector paths={paths} color={colorPairing ? colorPairing : `black`} />
+        <Col sm={24} md={12} style={{ position: `relative`, height: `100%` }}>
+          <div style={{
+            height: `100%`,
+            width: `100%`,
+            position: `absolute`,
+            bottom: `-3rem`
+          }}>
+            <Vector
+              paths={paths}
+              color={colorPairing ? colorPairing : `black`} />
           </div>
         </Col>
       </Row>

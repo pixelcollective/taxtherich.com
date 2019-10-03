@@ -8,24 +8,20 @@ import { Box } from 'rebass'
 import { Breadcrumb } from 'antd'
 
 // components
-import Header from '../components/Header'
-import Villains from '../components/Villains'
+import PageHeader from '../components/header/PageHeader'
+import Header from '../components/header/VectorHeader'
+import Villains from '../components/villain/Villains'
 
 const Home = ({ actions }) => (
-  <>
-    <Box mx={[5]}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Villains</Breadcrumb.Item>
-      </Breadcrumb>
-    </Box>
+  <Box style={{ padding: `50px` }}>
+    <PageHeader title={`Villains`} excerpt={`America's richest villains pay the least in taxes.`} />
     <Header
       heading={`The worst of the worst.`}
       subheading={`While the rest of America toils to meet their tax obligations, the richest of the rich sometimes don't even pay a dime. Send them and your legislators a personalized message letting them know what you think of that.`}
       background={`#F4F4F4`}
       color={`#333333`} />
     <Villains villains={actions} />
-  </>
+  </Box>
 )
 
 export default Home

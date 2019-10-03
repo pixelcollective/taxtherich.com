@@ -18,11 +18,11 @@ import { motion } from 'framer-motion'
 import { darken, complement, lighten } from 'polished'
 
 // Library
-import ActionNetworkForm from '../lib/ActionNetwork'
+import ActionNetworkForm from '../../lib/ActionNetwork'
 
 // Components
 import VillainContent from './villainContent'
-import { Loading, Error } from './Loaders'
+import { Loading, Error } from '../Loaders'
 
 const Villains = () => {
   const { data, loading, error } = useQuery(gql`
