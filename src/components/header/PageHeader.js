@@ -2,11 +2,10 @@
 import React from 'react'
 
 // @react-router
-import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // @rebass
-import { Box, Image } from 'rebass'
+import { Box } from 'rebass'
 
 // @antd
 import {
@@ -20,11 +19,7 @@ import {
 const PageHeader = ({
   excerpt,
   title,
-  image,
-  disableBack
 }) => {
-  let history = useHistory()
-
   return (
     <Box mb={[4]}>
       <Breadcrumb>

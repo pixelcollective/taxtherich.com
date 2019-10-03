@@ -7,11 +7,14 @@ import { Helmet } from 'react-helmet'
 // @rebass
 import { Box } from 'rebass'
 
-// components
+// @app/components
 import PageHeader from '../components/header/PageHeader'
 import SingleAction  from '../components/action/SingleAction'
 import Villains from '../components/villain/Villains'
 
+/**
+ * Page: Home
+ */
 const Home = ({actions, primary}) => (
   <Box style={{ padding: `50px` }}>
     <PageHeader

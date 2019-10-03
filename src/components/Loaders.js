@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 /**
  * Loading
  */
-const Loading = props => (
+const Loading = () => (
   <motion.div
     initial={{
       backgroundColor: `rgb(175, 198, 255)`,

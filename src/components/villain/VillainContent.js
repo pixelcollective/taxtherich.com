@@ -113,7 +113,9 @@ const VillainContent = ({
       </Col>
     </Row>
     {handleClose && (
-      <Box mt={[4]} onClick={() => handleClose(villainId)}>
+      <Box
+        mt={[4]}
+        onClick={() => handleClose(villainId)}>
         <Button
           style={{
             fontSize: `1em`,

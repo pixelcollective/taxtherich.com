@@ -18,9 +18,9 @@ import PageHeader from './../components/header/PageHeader'
 import { IndexedAction as Action } from '../components/action/IndexedAction'
 import { Loading, Error } from './../components/Loaders'
 
-
-
-// exports
+/**
+ * Page: Actions
+ */
 const Actions = ({ heading }) => {
   const { data, loading, error } = useQuery(gql`
     {

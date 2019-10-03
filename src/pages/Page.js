@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
 // @react-router
-import { useParams, useHistory } from 'react-router'
+import { useParams } from 'react-router'
 
 // @rebass
 import { Box } from 'rebass'

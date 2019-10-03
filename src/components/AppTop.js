@@ -15,7 +15,7 @@ import { Menu, Icon, Layout } from 'antd'
 const { Header } = Layout
 
 const AppTop = () => {
-  const { data, loading, error } = useQuery(gql`
+  const { data } = useQuery(gql`
     {
       menus(where: {location: PRIMARY_NAVIGATION}) {
         nodes {
