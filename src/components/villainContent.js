@@ -10,10 +10,7 @@ import { motion } from 'framer-motion'
 // @styled-components
 import styled from 'styled-components'
 
-// Components
-import Grid from './Grid'
-
-const ActionArea = styled.div`
+const VillainArea = styled.div`
   max-width: 500px;
 
   #can_embed_form_inner {
@@ -75,28 +72,27 @@ const ActionArea = styled.div`
   }
 `
 
-const ActionContent = ({
+const VillainContent = ({
   handleClose,
-  actionText,
-  actionId,
+  villainText,
+  villainId,
   light,
 }) => {
   return (
-  <Grid>
-    <motion.div
-      initial={{
-        position: `relative`,
-        fontSize: `16px`,
-        color: light ? `black` : `white`,
-      }}
-      transition={{ duration: 0.2 }}>
-      {actionText && (
-        <Text mb={[4]} dangerouslySetInnerHTML={{__html: actionText}} />
-      )}
-        <motion.div initial={{transformOrigin: `center`}}>
-        <ActionArea width={`100%`} light={light ? true : false} id={`can-petition-area-${actionId}`} />
+  <motion.div
+    initial={{
+      position: `relative`,
+      fontSize: `16px`,
+      color: light ? `black` : `white`,
+    }}
+    transition={{ duration: 0.2 }}>
+    {villainText && (
+      <Text mb={[4]} dangerouslySetInnerHTML={{__html: villainText}} />
+    )}
+      <motion.div initial={{transformOrigin: `center`}}>
+        <VillainArea width={`100%`} light={light ? true : false} id={`can-petition-area-${villainId}`} />
         {handleClose && (
-          <Box mt={[4]} onClick={() => handleClose(actionId)}>
+          <Box mt={[4]} onClick={() => handleClose(villainId)}>
             <Button
               style={{
                 fontSize: `1em`,
@@ -115,7 +111,7 @@ const ActionContent = ({
         )}
       </motion.div>
     </motion.div>
-  </Grid>
-)}
+  )
+}
 
-export default ActionContent
+export default VillainContent

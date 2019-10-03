@@ -8,9 +8,9 @@ import { Box } from 'rebass'
 import { Breadcrumb } from 'antd'
 
 // components
-import Action from '../components/Action'
+import SingleAction from '../components/action/SingleAction'
 
-const TakeAction = ({ actions, primary }) => (
+const TakeAction = ({ primary }) => (
   <>
     <Box mx={[5]}>
       <Breadcrumb style={{ margin: '16px 0' }}>
@@ -18,7 +18,7 @@ const TakeAction = ({ actions, primary }) => (
         <Breadcrumb.Item>Take Action</Breadcrumb.Item>
       </Breadcrumb>
     </Box>
-    <Action action={primary} />
+    <SingleAction action={primary} />
   </>
 )
 

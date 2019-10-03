@@ -21,19 +21,17 @@ import { darken, complement, lighten } from 'polished'
 import ActionNetworkForm from '../lib/ActionNetwork'
 
 // Components
-import Grid from './Grid'
-import ActionContent from './actionContent'
-import { Loading, Error } from './system'
+import VillainContent from './villainContent'
+import { Loading, Error } from './Loaders'
 
-
-const Actions = ({ actions }) => {
+const Villains = () => {
   const { data, loading, error } = useQuery(gql`
     {
-      actions {
+      villains {
         edges {
           node {
             id
-            action {
+            villain {
               page {
                 heading
                 subheading
@@ -61,8 +59,7 @@ const Actions = ({ actions }) => {
         }
       }
     }
-  `
-  )
+  `)
 
   const [currentAction, setCurrentAction] = useState(``)
   const dispatch = useDispatch()
@@ -110,8 +107,8 @@ const Actions = ({ actions }) => {
   }
 
   const render = loading ? <Loading /> : error ? <Error /> : data ? (
-    <Grid max={[`50%`]} minWidth={[`100%`]}>
-      {data.actions.edges.map(({node: {action: {design, action, page}}}) => (
+    <Box>
+      {data.villains.edges.map(({node: {villain: {design, action, page}}}) => (
         <Box key={action.actionNetworkId}>
           <motion.div
             initial={{
@@ -252,9 +249,9 @@ const Actions = ({ actions }) => {
                   currentAction === action.actionNetworkId
                     ? { opacity: 1, height: `auto` }
                     : { opacity: 0, height: 0 }}>
-                <ActionContent
-                  actionText={action.petition}
-                  actionId={action.actionNetworkId}
+                <VillainContent
+                  villainText={action.petition}
+                  villainId={action.actionNetworkId}
                   handleClose={closeAction}
                   paths={design.paths && design.paths} />
               </motion.div>
@@ -262,10 +259,10 @@ const Actions = ({ actions }) => {
           </motion.div>
         </Box>
       ))}
-    </Grid>
+    </Box>
   ) : null
 
   return render
 }
 
-export default Actions
+export default Villains

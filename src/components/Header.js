@@ -15,8 +15,8 @@ import { Box, Heading } from 'rebass'
 import { motion } from 'framer-motion'
 import { Vector } from './../art'
 
-// components
-import Grid from './Grid'
+// @antd
+import { Row, Col } from 'antd'
 
 const HeaderBox = styled(Box)`
   background: ${props => props.color};
@@ -37,16 +37,20 @@ const Title = styled(Heading)`
 const Header = ({heading, subheading}) => {
   const { color } = useSelector(state => state.color)
   const { paths } = useSelector(state => state.paths)
-
   const colorPairing = complement(color.secondary)
 
   return (
     <HeaderBox
       pt={[1, 0]}
+      mx={[5]}
       color={`#0F0F0F`}
-      style={{ backgroundColor: `#f0f0f0`, zIndex: 100, position: `relative` }}>
-      <Grid>
-        <Box p={[5]} color={`white`}>
+      style={{
+        backgroundColor: `#f0f0f0`,
+        zIndex: 100,
+        position: `relative`
+      }}>
+      <Row gutter={48}>
+        <Col sm={24} md={12} style={{marginBottom: `4em`}}>
           <motion.div
             initial={{opacity: 0}}
             animate={{opacity: 1}}
@@ -77,13 +81,13 @@ const Header = ({heading, subheading}) => {
               color={`black`}
               dangerouslySetInnerHTML={{__html: subheading}} />
           </motion.div>
-        </Box>
-        <Box>
-          <div style={{height: `100%`, position: `relative`, bottom: `-15%`}}>
+        </Col>
+        <Col sm={24} md={12} style={{position: `relative`, height: `100%`}}>
+          <div style={{height: `100%`, width: `100%`, position: `absolute`, bottom: `-3rem`}}>
             <Vector paths={paths} color={colorPairing ? colorPairing : `black`} />
           </div>
-        </Box>
-      </Grid>
+        </Col>
+      </Row>
     </HeaderBox>
   )
 }

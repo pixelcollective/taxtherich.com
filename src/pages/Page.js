@@ -1,9 +1,6 @@
 // @react
 import React from 'react'
 
-// @react-helmet
-import { Helmet } from 'react-helmet'
-
 // @apollo
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -13,14 +10,17 @@ import { useParams, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
 // @rebass
-import { Box } from 'rebass'
+import { Box, Image} from 'rebass'
 
 // @antd
-import { PageHeader, Breadcrumb, Layout, Typography, Divider } from 'antd'
-
-// @wordpress/data
+import {
+  PageHeader,
+  Breadcrumb,
+  Layout,
+  Typography,
+  Divider
+} from 'antd'
 const { Content, Header } = Layout
-const { Title } = Typography
 
 /**
  * Exports component
@@ -28,7 +28,6 @@ const { Title } = Typography
 const Page = () => {
   let { slug } = useParams()
   let history = useHistory()
-
   const { data } = useQuery(gql`
     {
       pages (where: {name: "${slug}"}) {
@@ -45,47 +44,54 @@ const Page = () => {
     }
   `)
 
-  const pages = data && data.pages && data.pages.nodes
-
-  return pages ? pages.map((
-    {title, content, excerpt, featuredImage},
-    id
-  ) => (
-    <div style={{marginTop: 0, paddingTop: 0}} key={id}>
-      <Header style={{
-        backgroundImage: `url(${featuredImage.guid})`,
-        minHeight: `40vh`,
-        backgroundSize: `cover`,
-        backgroundRepeat: `no-repeat`,
-      }}>
-        <Breadcrumb style={{
-          margin: `0 0 16px 0`,
-          paddingTop: `16px`,
+  return data && data.pages && data.pages.nodes
+    ? data.pages.nodes.map(({
+      title,
+      content,
+      excerpt,
+      featuredImage,
+    }, id) => (
+      <Box key={id}>
+        <Header style={{
+          minHeight: `20vh`,
+          minWidth: `100%`,
+          width: `100%`,
+          position: `relative`,
+          overflow: `hidden`,
         }}>
-          <Breadcrumb.Item>
-            <Link to={`/`}>Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>{title}</Breadcrumb.Item>
-        </Breadcrumb>
-      </Header>
-      <Content style={{ padding: `0 50px` }}>
-        <PageHeader
-          onBack={() => history.push('/')}
-          style={{ paddingLeft: 0, paddingRight: 0 }}
-          title={title}
-          subTitle={<Box dangerouslySetInnerHTML={{ __html: excerpt }} />} />
-        <Typography>
-          <Box dangerouslySetInnerHTML={{__html: content}} />
-          <Divider />
-        </Typography>
-      </Content>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={excerpt} />
-        <meta name="og:image" content={featuredImage.guid} />
-      </Helmet>
-    </div>
-  )) : null
+          <Image
+            src={featuredImage.guid}
+            w={[`100%`]}
+            style={{
+              objectFit: `cover`,
+              width: `100vw`,
+              position: `absolute`,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }} />
+        </Header>
+        <Content style={{ padding: `50px` }}>
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <Link to={`/`}>Home</Link>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+          </Breadcrumb>
+          <PageHeader
+            onBack={() => history.push('/')}
+            style={{ paddingLeft: 0, paddingRight: 0 }}
+            title={title}
+            subTitle={<Box dangerouslySetInnerHTML={{ __html: excerpt }} />} />
+          <Typography>
+            <Box dangerouslySetInnerHTML={{__html: content}} />
+            <Divider />
+          </Typography>
+        </Content>
+      </Box>
+    )
+  ) : null
 }
 
 export default Page

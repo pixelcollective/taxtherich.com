@@ -9,9 +9,9 @@ import { Breadcrumb } from 'antd'
 
 // components
 import Header from '../components/Header'
-import Actions from '../components/Actions'
+import Villains from '../components/Villains'
 
-const Home = ({ actions, primary }) => (
+const Home = ({ actions }) => (
   <>
     <Box mx={[5]}>
       <Breadcrumb style={{ margin: '16px 0' }}>
@@ -24,7 +24,7 @@ const Home = ({ actions, primary }) => (
       subheading={`While the rest of America toils to meet their tax obligations, the richest of the rich sometimes don't even pay a dime. Send them and your legislators a personalized message letting them know what you think of that.`}
       background={`#F4F4F4`}
       color={`#333333`} />
-    <Actions actions={actions} />
+    <Villains villains={actions} />
   </>
 )
 

@@ -1,42 +1,20 @@
 // react
 import React from 'react'
 
-// redux
-import { useSelector } from 'react-redux'
-
 // styled-components
 import styled from 'styled-components'
 
-// @polished
-import { complement } from 'polished'
-
 // @rebass
-import { Box, Heading, Text } from 'rebass'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Vector } from './../art'
-
-// components
-import Grid from './Grid'
+import { Box, Text } from 'rebass'
+import { motion } from 'framer-motion'
 
 const HeaderBox = styled(Box)`
   background: ${props => props.color};
   transition: background-color 0.2s ease-in-out;
 `
 
-const Title = styled(Heading)`
-  color: ${(props) => props.color};
-  transition: color 0.2s ease-in-out;
-  font-size: 4rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  margin-top: 0rem;
-`
-
 // exports
-const Header = ({ heading }) => {
-  const { color } = useSelector(state => state.color)
-  const colorPairing = complement(color.secondary)
-
+const Footer = ({ heading }) => {
   return (
     <HeaderBox pt={[1, 0]} color={`#0F0F0F`} style={{
       backgroundColor: `black`,
@@ -74,4 +52,4 @@ const Header = ({ heading }) => {
   )
 }
 
-export default Header
+export default Footer
