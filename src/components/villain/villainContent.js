@@ -10,6 +10,9 @@ import { motion } from 'framer-motion'
 // @styled-components
 import styled from 'styled-components'
 
+// @antd
+import { Row, Col, Typography } from 'antd'
+
 const VillainArea = styled.div`
   max-width: 500px;
 
@@ -75,43 +78,59 @@ const VillainArea = styled.div`
 const VillainContent = ({
   handleClose,
   villainText,
+  villainBio,
   villainId,
   light,
-}) => {
-  return (
+}) => (
   <motion.div
     initial={{
       position: `relative`,
       fontSize: `16px`,
-      color: light ? `black` : `white`,
+      color: `white`,
     }}
     transition={{ duration: 0.2 }}>
     {villainText && (
       <Text mb={[4]} dangerouslySetInnerHTML={{__html: villainText}} />
     )}
-      <motion.div initial={{transformOrigin: `center`}}>
-        <VillainArea width={`100%`} light={light ? true : false} id={`can-petition-area-${villainId}`} />
-        {handleClose && (
-          <Box mt={[4]} onClick={() => handleClose(villainId)}>
-            <Button
-              style={{
-                fontSize: `1em`,
-                cursor: `pointer`,
-                textDecoration: `none`,
-                position: `relative`,
-                overflow: `hidden`
-              }}
-              ml={[2]}
-              color={`black`}
-              backgroundColor={`white`}
-              fontSize={[2]}>
-              Return
-            </Button>
-          </Box>
+    <Row gutter={48}>
+      <Col sm={24} md={12}>
+        {villainBio && (
+          <Typography style={{
+            color: `white`,
+            fontWeight: 300,
+          }}>
+            <Text mb={[4]} dangerouslySetInnerHTML={{ __html: villainBio }} />
+          </Typography>
         )}
-      </motion.div>
-    </motion.div>
-  )
-}
+      </Col>
+      <Col sm={24} md={12}>
+        <motion.div initial={{ transformOrigin: `center` }}>
+          <VillainArea
+            width={`100%`}
+            light={light ? true : false}
+            id={`can-petition-area-${villainId}`} />
+        </motion.div>
+      </Col>
+    </Row>
+    {handleClose && (
+      <Box mt={[4]} onClick={() => handleClose(villainId)}>
+        <Button
+          style={{
+            fontSize: `1em`,
+            cursor: `pointer`,
+            textDecoration: `none`,
+            position: `relative`,
+            overflow: `hidden`
+          }}
+          ml={[2]}
+          color={`black`}
+          backgroundColor={`white`}
+          fontSize={[2]}>
+          Return
+          </Button>
+      </Box>
+    )}
+  </motion.div>
+)
 
 export default VillainContent

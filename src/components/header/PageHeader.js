@@ -34,14 +34,11 @@ const PageHeader = ({
         <Breadcrumb.Item>{title}</Breadcrumb.Item>
       </Breadcrumb>
       <AntHeader
-        onBack={() => history.push('/')}
-        back={disableBack ? false : true}
+        onBack={false}
+        back={false}
         style={{ paddingLeft: 0, paddingRight: 0 }}
         title={title}
         subTitle={<Box dangerouslySetInnerHTML={{ __html: excerpt }} />} />
-      {image && (
-        <Image src={image} w={[`100%`]} />
-      )}
     </Box>
   )
 }

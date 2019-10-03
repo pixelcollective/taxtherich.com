@@ -35,6 +35,7 @@ import Home from './pages/Home'
 import Actions from './pages/Actions'
 import TakeAction from './pages/TakeAction'
 import Villains from './pages/Villains'
+import Villain from './pages/Villain'
 import Page from './pages/Page'
 
 // @app/styles
@@ -51,6 +52,7 @@ const App = () => (
           <Layout className="layout">
             <AppTop actions={data.menu} />
             <Switch>
+              <Route path={`/villains/:slug`} component={Villain} />
               <Route path={`/take-action`}>
                 <TakeAction actions={data.takeAction} />
               </Route>

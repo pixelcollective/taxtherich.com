@@ -65,10 +65,10 @@ const AdvocacyForm = styled.div`
       input {
         background: transparent;
         border: none;
-        border-bottom: 2px solid ${props => props.light ? `rgba(0, 0, 0, 0.8)` : `white`};
+        border-bottom: 1px solid ${props => props.light ? `white` : `rgba(0, 0, 0, 0.2)`};
 
         &::placeholder {
-          color: ${props => props.light ? `rgba(0, 0, 0, 0.8)` : `white`};
+          color: ${props => props.light ? `white` : `rgba(0, 0, 0, 0.4)`};
         }
 
         &.error_input {
@@ -82,8 +82,6 @@ const AdvocacyForm = styled.div`
 `
 
 const SingleAction = () => {
-  let history = useHistory()
-
   let an = new ActionNetworkForm(`tax-jeff-bezos`)
   an.loadScript()
 

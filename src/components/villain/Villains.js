@@ -21,7 +21,7 @@ import { darken, complement, lighten } from 'polished'
 import ActionNetworkForm from '../../lib/ActionNetwork'
 
 // Components
-import VillainContent from './villainContent'
+import VillainContent from './VillainContent'
 import { Loading, Error } from '../Loaders'
 
 const Villains = () => {
@@ -31,6 +31,7 @@ const Villains = () => {
         edges {
           node {
             id
+            slug
             villain {
               page {
                 heading
@@ -106,9 +107,15 @@ const Villains = () => {
     })
   }
 
-  const render = loading ? <Loading /> : error ? <Error /> : data ? (
+  data && data.villains && console.log(data.villains.edges[0].node)
+
+  const render = loading ? (
+    <Loading />
+  ) : error ? (
+    <Error />
+  ) : data ? (
     <Box>
-      {data.villains.edges.map(({node: {villain: {design, action, page}}}) => (
+      {data.villains.edges.map(({node: {id, villain: {design, action, page, profile}}}) => (
         <Box key={action.actionNetworkId}>
           <motion.div
             initial={{
@@ -250,6 +257,7 @@ const Villains = () => {
                     ? { opacity: 1, height: `auto` }
                     : { opacity: 0, height: 0 }}>
                 <VillainContent
+                  villainBio={profile.about}
                   villainText={action.petition}
                   villainId={action.actionNetworkId}
                   handleClose={closeAction}
