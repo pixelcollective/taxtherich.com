@@ -4,9 +4,6 @@ import React from 'react'
 // @rebass
 import { Box } from 'rebass'
 
-// antd
-import { Breadcrumb } from 'antd'
-
 // components
 import PageHeader from '../components/header/PageHeader'
 import Header from '../components/header/VectorHeader'

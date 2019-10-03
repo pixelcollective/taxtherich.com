@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet'
 import { Box } from 'rebass'
 
 // @antd
-import { Row, Col } from 'antd'
+import { Col } from 'antd'
 
 import PageHeader from './../components/header/PageHeader'
 import { IndexedAction as Action } from '../components/action/IndexedAction'

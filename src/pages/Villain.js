@@ -8,18 +8,11 @@ import gql from 'graphql-tag'
 // @react-router
 import { useParams } from 'react-router'
 
-// @rebass
-import { Box } from 'rebass'
-
 // @antd
-import {
-  Typography,
-  Divider
-} from 'antd'
+import { Typography } from 'antd'
 
 // components
 import VillainComponent from '../components/villain/SingleVillain'
-import PageHeader from './../components/header/PageHeader'
 
 const Villain = () => {
   let { slug } = useParams()
@@ -60,8 +53,6 @@ const Villain = () => {
   `)
 
   const villain = data && data.villains && data.villains.edges[0].node.villain
-
-  console.log(villain)
 
   return villain && villain.profile ? (
     <Typography>
