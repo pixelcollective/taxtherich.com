@@ -12,16 +12,17 @@ import { Helmet } from 'react-helmet'
 import { Box } from 'rebass'
 
 // @antd
-import { Col } from 'antd'
+import { Row, Col } from 'antd'
 
+// components
 import PageHeader from './../components/header/PageHeader'
-import { IndexedAction as Action } from '../components/action/IndexedAction'
+import ActionContent from '../components/action/Action'
 import { Loading, Error } from './../components/Loaders'
 
 /**
  * Page: Actions
  */
-const Actions = ({ heading }) => {
+const Actions = () => {
   const { data, loading, error } = useQuery(gql`
     {
       actions {
@@ -52,16 +53,18 @@ const Actions = ({ heading }) => {
   const render = loading ? <Loading /> : error ? <Error /> : data ? (
     <Box style={{ padding: `50px` }}>
       <PageHeader
-        title={`Tax The Rich`}
+        title={`Actions`}
         disabledBack={true}
-        excerpt={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
-      {data.actions.edges.map(({ node: { action: { design, action, page } } }) => (
-        <Col>
-          <Action action={action} />
-        </Col>
+        excerpt={`Get heard.`} />
+      {data.actions.edges.map(({ node: { action: { action } } }) => (
+        <Row>
+          <Col>
+            <ActionContent action={action} />
+          </Col>
+        </Row>
       ))}
       <Helmet>
-        <title>The Villainous Rich</title>
+        <title>Take Action | Tax The Rich</title>
         <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
       </Helmet>
     </Box>

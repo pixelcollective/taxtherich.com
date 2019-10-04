@@ -5,24 +5,24 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
-// @react-helmet
-import { Helmet } from 'react-helmet'
+// @react-router
+import { useParams } from 'react-router'
 
-// @rebass
-import { Box } from 'rebass'
+// @antd
+import { Typography } from 'antd'
 
 // components
-import PageHeader from '../components/header/PageHeader'
-import SingleAction from '../components/action/SingleAction'
+import VillainComponent from '../components/villain/SingleVillain'
 
-const TakeAction = () => {
-  const { data } = useQuery(gql`
+const Villain = () => {
+  let { slug } = useParams()
+  const { data, loading, error } = useQuery(gql`
     {
-      actions {
+      villains (where: {name: "${slug}"}) {
         edges {
           node {
             id
-            action {
+            villain {
               page {
                 heading
                 subheading
@@ -50,16 +50,15 @@ const TakeAction = () => {
         }
       }
     }
-  }`)
-  return (
-    <Box style={{ padding: `50px` }}>
-      <PageHeader
-        title={`Tax The Rich`}
-        disabledBack={true}
-        excerpt={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
-      <SingleAction action={data.actions.edges[0]} />
-    </Box>
-  )
+  `)
+
+  const villain = data && data.villains && data.villains.edges[0].node.villain
+
+  return villain && villain.profile ? (
+    <Typography>
+      <VillainComponent villain={villain} />
+    </Typography>
+  ) : <p>Loading..</p>
 }
 
-export default TakeAction
+export default Villain

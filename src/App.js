@@ -16,10 +16,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 
 // @apollo
-import {
-  GraphQLProvider,
-  data
-} from './graph'
+import GraphQLProvider from './graph/provider'
 
 import theme from './theme'
 
@@ -33,6 +30,7 @@ import Footer from './components/Footer'
 // @app/views
 import Home from './pages/Home'
 import Actions from './pages/Actions'
+import Action from './pages/Action'
 import TakeAction from './pages/TakeAction'
 import Villains from './pages/Villains'
 import Villain from './pages/Villain'
@@ -50,22 +48,15 @@ const App = () => (
       <ThemeProvider theme={theme}>
         <Router>
           <Layout className="layout">
-            <AppTop actions={data.menu} />
+            <AppTop />
             <Switch>
               <Route path={`/villains/:slug`} component={Villain} />
-              <Route path={`/take-action`}>
-                <TakeAction actions={data.takeAction} />
-              </Route>
-              <Route path={`/actions`}>
-                <Actions actions={``} />
-              </Route>
-              <Route path={`/villains`}>
-                <Villains actions={data.home} />
-              </Route>
+              <Route path={`/actions/:slug`} component={Action} />
+              <Route path={`/take-action`} component={TakeAction} />
+              <Route path={`/actions`} component={Actions} />
+              <Route path={`/villains`} component={Villains} />
               <Route path={`/:slug`} component={Page} />
-              <Route path={'/'}>
-                <Home actions={data.home} />
-              </Route>
+              <Route path={'/'} component={Home} />
             </Switch>
             <Footer
               heading={`Tax the Rich`}

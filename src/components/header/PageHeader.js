@@ -14,7 +14,7 @@ import {
 } from 'antd'
 
 /**
- * Exports component
+ * Header and Breadcrumb Components
  */
 const PageHeader = ({
   excerpt,
