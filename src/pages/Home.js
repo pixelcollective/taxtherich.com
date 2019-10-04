@@ -48,11 +48,9 @@ const Home = ({ actions, primary }) => {
     }
   `)
 
-  const action = data && data.actions && data.actions.edges[0].node.action
+  const action = data && data.actions && data.actions.edges.length > 0 && data.actions.edges[0].node.action
 
-  action && console.log(action)
-
-  const render = loading ? <Loading /> : error ? <Error /> : data ? (
+  const render = loading ? <Loading /> : error ? <Error /> : action ? (
     <Box style={{ padding: `50px` }}>
       <PageHeader
         title={`Tax The Rich`}
@@ -65,7 +63,9 @@ const Home = ({ actions, primary }) => {
         <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
       </Helmet>
     </Box>
-  ) : null
+  ) : (
+    <Loading />
+  )
 
   return render
 }
