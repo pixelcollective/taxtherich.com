@@ -13,6 +13,9 @@ import styled from 'styled-components'
 // @antd
 import { Row, Col } from 'antd'
 
+// action-network
+import ActionNetworkForm from './../../lib/ActionNetwork'
+
 // @app/components
 import PageHeader from './../header/PageHeader'
 
@@ -83,8 +86,12 @@ const SingleVillain = ({
     action,
     profile,
     page,
+    design,
   }
 }) => {
+  const an = action.actionNetworkId && new ActionNetworkForm(action.actionNetworkId)
+  an.loadScript()
+
   return (
     <Box>
       <Image
@@ -134,6 +141,7 @@ const SingleVillain = ({
                   <motion.div initial={{ transformOrigin: `center` }}>
                     <VillainArea
                       width={`100%`}
+                      light={true}
                       id={`can-petition-area-${action.actionNetworkId}`} />
                   </motion.div>
                 </Col>

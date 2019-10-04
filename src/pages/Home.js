@@ -63,9 +63,7 @@ const Home = ({ actions, primary }) => {
         <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
       </Helmet>
     </Box>
-  ) : (
-    <Loading />
-  )
+  ) : <Loading />
 
   return render
 }
