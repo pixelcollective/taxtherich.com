@@ -32,7 +32,7 @@ const AppTop = () => {
     }
   `)
 
-  const gqlUrl = `https://taxtherich.data.tinypixel.dev/`
+  const gqlUrl = `https://taxtherich.data.tinypixel.dev`
   const menuItems = data && data.menus && data.menus.nodes[0].menuItems.nodes
 
   return (

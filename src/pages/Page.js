@@ -31,7 +31,6 @@ const Page = () => {
         nodes {
           title
           content
-          excerpt
           featuredImage {
             guid
             sourceUrl
@@ -41,22 +40,19 @@ const Page = () => {
     }
   `)
 
-  return data && data.pages && data.pages.nodes
-    ? data.pages.nodes.map(({
-      title,
-      content,
-      excerpt,
-      featuredImage,
-    }, id) => (
-      <Box key={id} style={{ padding: `50px` }}>
-        <PageHeader excerpt={excerpt} title={title} image={featuredImage.guid} />
-        <Typography>
-          <Box dangerouslySetInnerHTML={{__html: content}} />
-          <Divider />
-        </Typography>
-      </Box>
-    )
-  ) : null
+  return data && data.pages && data.pages.nodes ? data.pages.nodes.map(({
+    title,
+    content,
+    featuredImage,
+  }, id) => (
+    <Box key={id} style={{ padding: `50px` }}>
+      <PageHeader title={title} image={featuredImage.guid} />
+      <Typography>
+        <Box dangerouslySetInnerHTML={{__html: content}} />
+        <Divider />
+      </Typography>
+    </Box>
+  )) : null
 }
 
 export default Page
