@@ -45,7 +45,7 @@ const Header = ({ heading, subheading }) => {
       style={{
         backgroundColor: `#f0f0f0`,
         zIndex: 100,
-        position: `relative`
+        position: `relative`,
       }}>
       <Row gutter={48}>
         <Col sm={24} md={12} style={{ marginBottom: `4em` }}>

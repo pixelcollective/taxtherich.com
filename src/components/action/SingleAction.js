@@ -78,14 +78,14 @@ const AdvocacyForm = styled.div`
 `
 
 const SingleAction = ({action}) => {
-  let an = new ActionNetworkForm(action.action.actionNetworkId)
+  let an = new ActionNetworkForm(action.actionNetworkId)
   an.loadScript()
 
   return (
     <Row gutter={48}>
       <Col sm={24} md={12}>
         <Typography>
-          <Title>{action.action.heading}</Title>
+          <Title>{action.heading}</Title>
           <Text
             color={`black`}
             fontSize={[3]}
@@ -98,14 +98,14 @@ const SingleAction = ({action}) => {
             `}
             mt={[4]}
             dangerouslySetInnerHTML={{
-              __html: action.action.context
+              __html: action.context
             }} />
           <Divider />
         </Typography>
       </Col>
       <Col sm={24} md={12}>
         <Box mt={4}>
-          <AdvocacyForm id={`can-petition-area-${action.action.actionNetworkId}`} />
+          <AdvocacyForm id={`can-petition-area-${action.actionNetworkId}`} />
         </Box>
       </Col>
     </Row>

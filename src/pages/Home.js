@@ -20,7 +20,7 @@ import { Loading, Error } from './../components/Loaders'
 /**
  * Page: Home
  */
-const Home = ({ actions, primary }) => {
+const Home = () => {
   const { data, loading, error } = useQuery(gql`
     {
       actions {
@@ -56,10 +56,10 @@ const Home = ({ actions, primary }) => {
         title={`Tax The Rich`}
         disabledBack={true}
         excerpt={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
-      <SingleAction action={action} />
+      <SingleAction action={action.action} />
       <Villains />
       <Helmet>
-        <title>The Villainous Rich</title>
+        <title>Tax The Rich</title>
         <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
       </Helmet>
     </Box>

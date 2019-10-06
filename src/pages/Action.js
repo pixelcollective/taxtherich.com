@@ -9,41 +9,27 @@ import gql from 'graphql-tag'
 import { useParams } from 'react-router'
 
 // @antd
-import { Typography } from 'antd'
+import { Box } from 'rebass'
 
 // components
-import VillainComponent from '../components/villain/SingleVillain'
+import ActionComponent from '../components/action/SingleAction'
+import PageHeader from '../components/header/PageHeader'
+import { Loading } from '../components/Loaders'
 
-const Villain = () => {
+const Action = () => {
   let { slug } = useParams()
-  const { data, loading, error } = useQuery(gql`
+  const { data } = useQuery(gql`
     {
-      villains (where: {name: "${slug}"}) {
+      actions (where: {name: "${slug}"}) {
         edges {
           node {
             id
-            villain {
-              page {
-                heading
-                subheading
-                featuredImage {
-                  guid
-                  srcSet
-                }
-              }
+            action {
               action {
                 actionNetworkId
-                heading
                 context
-              }
-              profile {
-                name
-                about
-              }
-              design {
-                colorPrimary
-                colorSecondary
-                paths
+                heading
+                petition
               }
             }
           }
@@ -52,13 +38,20 @@ const Villain = () => {
     }
   `)
 
-  const villain = data && data.villains && data.villains.edges[0].node.villain
+  data && console.log(data)
 
-  return villain && villain.profile ? (
-    <Typography>
-      <VillainComponent villain={villain} />
-    </Typography>
-  ) : <p>Loading..</p>
+  const action = data && data.actions && data.actions.edges[0].node.action
+
+  return action ? (
+    <>
+      <Box style={{ padding: `50px` }}>
+        <PageHeader
+          title={`Take Action`}
+          excerpt={action.action.heading} />
+        <ActionComponent action={action.action} />
+      </Box>
+    </>
+  ) : <Loading />
 }
 
-export default Villain
+export default Action

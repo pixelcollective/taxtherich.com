@@ -16,7 +16,7 @@ import VillainComponent from '../components/villain/SingleVillain'
 
 const Villain = () => {
   let { slug } = useParams()
-  const { data, loading, error } = useQuery(gql`
+  const { data } = useQuery(gql`
     {
       villains (where: {name: "${slug}"}) {
         edges {

@@ -5,16 +5,15 @@ class ActionNetworkForm {
 
   loadScript() {
     const scripts = document.querySelectorAll(`#actionNetwork-${this.actionId}`)
+    scripts.forEach(script => script.parentNode.removeChild(script))
 
-    if (scripts.length <= 0) {
-      const script = document.createElement('script')
-      script.src = `https://actionnetwork.org/widgets/v3/petition/${this.actionId}?format=js&source=widget`
-      script.id = `actionNetwork-${this.actionId}`
+    const script = document.createElement('script')
+    script.src = `https://actionnetwork.org/widgets/v3/petition/${this.actionId}?format=js&source=widget`
+    script.id = `actionNetwork-${this.actionId}`
 
-      document.body.appendChild(script)
+    document.body.appendChild(script)
 
-      return script.id
-    }
+    return script.id
   }
 
   removeScript() {
