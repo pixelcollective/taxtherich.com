@@ -29,6 +29,7 @@ const Actions = () => {
         edges {
           node {
             id
+            slug
             action {
               page {
                 heading
@@ -56,10 +57,10 @@ const Actions = () => {
         title={`Actions`}
         disabledBack={true}
         excerpt={`Get heard.`} />
-      {data.actions.edges.map(({ node: { action: { action } } }) => (
+      {data.actions.edges.map(({ node }) => (
         <Row>
           <Col>
-            <ActionContent action={action} />
+            <ActionContent action={node} />
           </Col>
         </Row>
       ))}

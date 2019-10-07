@@ -17,12 +17,17 @@ import { motion } from 'framer-motion'
 // polished
 import { darken, complement, lighten } from 'polished'
 
+// antd
+import { Typography } from 'antd'
+
 // Library
 import ActionNetworkForm from '../../lib/ActionNetwork'
 
 // Components
 import VillainContent from './VillainContent'
 import { Loading, Error } from '../Loaders'
+
+const { Heading } = Typography
 
 const Villains = () => {
   const { data, loading, error } = useQuery(gql`
@@ -227,7 +232,7 @@ const Villains = () => {
               maxWidth={currentAction === action.actionNetworkId ? [`80vw`] : [`80vw`]}
               maxHeight={currentAction === action.actionNetworkId ? `none` : `50vh`}
               overflowY={currentAction === action.actionNetworkId && `hidden`}
-              fontSize={[6]}
+              fontSize={[3, 6]}
               position={`relative`}
               fontWeight={[`800`]}>
               <motion.div
@@ -246,7 +251,7 @@ const Villains = () => {
                 dangerouslySetInnerHTML={{ __html: page.heading }} />
               <Text
                 color={`white`}
-                fontSize={[5]}
+                fontSize={[3, 5]}
                 my={[4]}
                 mt={[3]}
                 dangerouslySetInnerHTML={{ __html: page.subheading }} />

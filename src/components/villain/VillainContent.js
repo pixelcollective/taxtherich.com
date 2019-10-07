@@ -115,7 +115,7 @@ const VillainContent = ({
     {handleClose && (
       <Box
         mt={[4]}
-        onClick={() => handleClose(villainId)}>
+        onClick={() => window.location.href = `/` }>
         <Button
           style={{
             fontSize: `1em`,
