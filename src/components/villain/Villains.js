@@ -68,11 +68,9 @@ const Villains = () => {
 
   if (!currentAction) {
     const an = new ActionNetworkForm(state.action.id)
+
     an.loadScript()
-
-    state.ranAction = true
   }
-
 
   const openAction = actionNetworkId => {
     dispatch({
@@ -87,8 +85,7 @@ const Villains = () => {
   }
 
   const closeAction = actionNetworkId => {
-    setCurrentAction(false)
-
+    setCurrentAction()
     dispatch({
       type: `action`,
       payload: {
@@ -99,12 +96,12 @@ const Villains = () => {
     })
   }
 
-  const render = loading ? (
+  return loading ? (
     <Loading />
   ) : error ? (
     <Error />
   ) : data ? (
-    <Box>
+    <Box> ``
       {data.villains.edges.map(({node: {id, villain: {design, action, page, profile}}}) => (
         <Box key={action.actionNetworkId}>
           <motion.div
@@ -259,8 +256,6 @@ const Villains = () => {
       ))}
     </Box>
   ) : null
-
-  return render
 }
 
 export default Villains
