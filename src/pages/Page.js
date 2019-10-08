@@ -8,6 +8,9 @@ import gql from 'graphql-tag'
 // @react-router
 import { useParams } from 'react-router'
 
+// @react-helmet
+import { Helmet } from 'react-helmet'
+
 // @rebass
 import { Box } from 'rebass'
 
@@ -31,6 +34,7 @@ const Page = () => {
         nodes {
           title
           content
+          slug
           featuredImage {
             guid
             sourceUrl
@@ -51,6 +55,13 @@ const Page = () => {
         <Box dangerouslySetInnerHTML={{__html: content}} />
         <Divider />
       </Typography>
+      <Helmet>
+        <title>Tax The Rich</title>
+        <meta property="og:url" content={`https://taxtherich.com/${slug}`} />
+        <meta property="og:type" content={`article`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:image" content={featuredImage.guid} />
+      </Helmet>
     </Box>
   )) : null
 }
