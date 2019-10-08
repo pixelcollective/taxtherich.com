@@ -17,17 +17,12 @@ import { motion } from 'framer-motion'
 // polished
 import { darken, complement, lighten } from 'polished'
 
-// antd
-import { Typography } from 'antd'
-
 // Library
 import ActionNetworkForm from '../../lib/ActionNetwork'
 
 // Components
 import VillainContent from './VillainContent'
 import { Loading, Error } from '../Loaders'
-
-const { Heading } = Typography
 
 const Villains = () => {
   const { data, loading, error } = useQuery(gql`
@@ -71,22 +66,13 @@ const Villains = () => {
   const dispatch = useDispatch()
   const state = useSelector(state => state.action)
 
-  const an = new ActionNetworkForm(state.action.id)
-
-  if (state.action.requested === true && state.action.loaded === false) {
+  if (!currentAction) {
+    const an = new ActionNetworkForm(state.action.id)
     an.loadScript()
-  } else if (state.action.requested === false && state.action.loaded === true) {
-    an.removeScript()
 
-    dispatch({
-      type: `action`,
-      payload: {
-        id: ``,
-        loaded: false,
-        requested: false,
-      }
-    })
+    state.ranAction = true
   }
+
 
   const openAction = actionNetworkId => {
     dispatch({
@@ -101,7 +87,8 @@ const Villains = () => {
   }
 
   const closeAction = actionNetworkId => {
-    setCurrentAction(``)
+    setCurrentAction(false)
+
     dispatch({
       type: `action`,
       payload: {
@@ -111,8 +98,6 @@ const Villains = () => {
       }
     })
   }
-
-  data && data.villains && console.log(data.villains.edges[0].node)
 
   const render = loading ? (
     <Loading />

@@ -78,8 +78,8 @@ const AdvocacyForm = styled.div`
 `
 
 const SingleAction = ({action, heading}) => {
-  let an = new ActionNetworkForm(action.actionNetworkId)
-  an.loadScript()
+  const an = new ActionNetworkForm(action.actionNetworkId)
+  const ranScript = an.loadScript()
 
   return (
     <Row gutter={48}>
