@@ -14,7 +14,7 @@ import styled from 'styled-components'
 import { Row, Col, Typography } from 'antd'
 
 const VillainArea = styled.div`
-  max-width: 500px;
+  max-width: 100vw;
 
   #can_embed_form_inner {
     #form_col1 {
@@ -84,6 +84,8 @@ const VillainContent = ({
 }) => (
   <motion.div
     initial={{
+      maxWidth: `100vw`,
+      overflow: `hidden`,
       position: `relative`,
       fontSize: `16px`,
       color: `white`,

@@ -20,7 +20,7 @@ import ActionNetworkForm from './../../lib/ActionNetwork'
 import PageHeader from './../header/PageHeader'
 
 const VillainArea = styled.div`
-  max-width: 500px;
+  max-width: 100vw;
 
   #can_embed_form_inner {
     #form_col1 {
@@ -93,19 +93,20 @@ const SingleVillain = ({
   an.loadScript()
 
   return (
-    <Box>
+    <Box style={{
+      maxWidth: `100vw`,
+      overflow: `hidden`,
+    }}>
       <Image
         src={page.featuredImage.guid}
         style={{
           position: `fixed`,
           zIndex: 0,
+          top: `-0px`,
           height: `100vh`,
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
+          width: `100vw`,
           objectFit: `cover`,
-          scale: 1.2,
+          scale: 1.4,
         }} />
       <Box style={{
         position: `relative`,
@@ -115,12 +116,6 @@ const SingleVillain = ({
         <Box
           style={{
               opacity: 1,
-              maxHeight: `100vh`,
-              minWidth: `100vw`,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
               zIndex: 10,
               transformOrigin: `center`,
               overflowY: `scroll`,

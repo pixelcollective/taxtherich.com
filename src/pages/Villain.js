@@ -61,7 +61,7 @@ const Villain = () => {
     <Typography>
       <VillainComponent villain={villain} />
       <Helmet>
-        <title>${villain.profile.name} needs to pay their taxes.</title>
+        <title>`${villain.profile.name} needs to pay their taxes.`</title>
         <meta property="og:url" content={`https://taxtherich.com/villains/${slug}`} />
         <meta property="og:type" content={`article`} />
         <meta property="og:title" content={`${villain.profile.name} needs to pay their taxes.`} />
