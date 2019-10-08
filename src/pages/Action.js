@@ -5,6 +5,9 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
+// react-helmet
+import { Helmet } from 'react-helmet'
+
 // @react-router
 import { useParams } from 'react-router'
 
@@ -24,11 +27,21 @@ const Action = () => {
         edges {
           node {
             id
+            slug
+            title
+            excerpt
             action {
+              page {
+                heading
+                subheading
+                featuredImage {
+                  guid
+                  srcSet
+                }
+              }
               action {
                 actionNetworkId
                 context
-                heading
                 petition
               }
             }
@@ -38,18 +51,24 @@ const Action = () => {
     }
   `)
 
-  data && console.log(data)
-
   const action = data && data.actions && data.actions.edges[0].node.action
+  console.log(action)
 
   return action ? (
     <>
       <Box style={{ padding: `50px` }}>
-        <PageHeader
-          title={`Take Action`}
-          excerpt={action.action.heading} />
+        <PageHeader title={action.page.subheading} />
         <ActionComponent action={action.action} />
-      </Box>
+       </Box>
+      <Helmet>
+        <title>{action.page.subheading}</title>
+        <meta property="og:url" content={`https://taxtherich.com/actions/${slug}`} />
+        <meta property="og:type" content={`article`} />
+        <meta property="og:title" content={action.page.heading} />
+        <meta property="og:description" content={action.page.subheading} />
+        <meta property="og:image" content={action.page.featuredImage && action.page.featuredImage.guid} />
+        <meta name="description" content={action.page.subheading} />
+      </Helmet>
     </>
   ) : <Loading />
 }
