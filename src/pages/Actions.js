@@ -65,8 +65,12 @@ const Actions = () => {
         </Row>
       ))}
       <Helmet>
-        <title>Take Action | Tax The Rich</title>
-        <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
+        <title>Take Action | Tax the Rich</title>
+        <meta property="og:url" content={`https://taxtherich.com/actions`} />
+        <meta property="og:type" content={`article`} />
+        <meta property="og:title" content={`Take Action - Tax The Rich`} />
+        <meta property="og:description" content={`https://data.tinypixel.dev/app/uploads/sites/2/2019/10/patricia-valerio-c3faD7HE6io-unsplash.jpg`} />
+        <meta property="og:image" content={`https://`} />
       </Helmet>
     </Box>
   ) : null
