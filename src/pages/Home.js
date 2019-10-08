@@ -60,7 +60,11 @@ const Home = () => {
       <Villains />
       <Helmet>
         <title>Tax The Rich</title>
-        <meta name="description" content={`America's wealthiest citizens don't pay a dime in taxes. No fair!`} />
+        <meta property="og:url" content={`https://taxtherich.com/`} />
+        <meta property="og:type" content={`article`} />
+        <meta property="og:title" content={`Tax The Rich`} />
+        <meta property="og:description" content={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
+        <meta property="og:image" content={`https://data.tinypixel.dev/app/uploads/sites/2/2019/10/patricia-valerio-c3faD7HE6io-unsplash.jpg`} />
       </Helmet>
     </Box>
   ) : <Loading />
