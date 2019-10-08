@@ -57,8 +57,8 @@ const Action = () => {
   return action ? (
     <>
       <Box style={{ padding: `50px` }}>
-        <PageHeader title={action.page.subheading} />
-        <ActionComponent action={action.action} />
+        <PageHeader title={`Take Action`} />
+        <ActionComponent heading={action.page.heading} action={action.action} />
        </Box>
       <Helmet>
         <title>{action.page.subheading}</title>

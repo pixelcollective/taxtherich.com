@@ -77,7 +77,7 @@ const AdvocacyForm = styled.div`
   }
 `
 
-const SingleAction = ({action}) => {
+const SingleAction = ({action, heading}) => {
   let an = new ActionNetworkForm(action.actionNetworkId)
   an.loadScript()
 
@@ -85,7 +85,7 @@ const SingleAction = ({action}) => {
     <Row gutter={48}>
       <Col sm={24} md={12}>
         <Typography>
-          <Title>{action.heading}</Title>
+          <Title>{heading}</Title>
           <Text
             color={`black`}
             fontSize={[3]}
