@@ -23,6 +23,10 @@ import { Loading, Error } from './../components/Loaders'
 const Home = () => {
   const { data, loading, error } = useQuery(gql`
     {
+      allSettings {
+        generalSettingsTitle
+        generalSettingsDescription
+      }
       actions {
         edges {
           node {
@@ -48,6 +52,7 @@ const Home = () => {
     }
   `)
 
+  const site = data && data.allSettings
   const action = data && data.actions && data.actions.edges.length > 0 && data.actions.edges[0].node.action
 
   const render = loading ? <Loading /> : error ? <Error /> : action ? (
@@ -55,15 +60,17 @@ const Home = () => {
       <PageHeader
         title={`Tax The Rich`}
         disabledBack={true}
-        excerpt={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
-      <SingleAction action={action.action} />
+        excerpt={site.generalSettingsDescription ? site.generalSettingsDescription : null} />
+      <SingleAction heading={action.page.subheading} action={action.action} />
       <Villains />
       <Helmet>
-        <title>Tax The Rich</title>
+        <title>{site.generalSettingsTitle}</title>
         <meta property="og:url" content={`https://taxtherich.com/`} />
         <meta property="og:type" content={`article`} />
-        <meta property="og:title" content={`Tax The Rich`} />
-        <meta property="og:description" content={`We have reached a point where over 70% of Americans now believe that the economy is rigged against them.`} />
+        <meta property="og:title" content={site.generalSettingsTitle} />
+        {site.generalSettingsDescription && (
+          <meta property="og:description" content={site.generalSettingsDescription} />
+        )}
         <meta property="og:image" content={`https://data.tinypixel.dev/app/uploads/sites/2/2019/10/patricia-valerio-c3faD7HE6io-unsplash.jpg`} />
       </Helmet>
     </Box>
