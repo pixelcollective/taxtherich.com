@@ -62,7 +62,7 @@ const Action = () => {
        </Box>
       <Helmet>
         <title>{action.page.subheading}</title>
-        <meta property="og:url" content={`https://taxtherich.com/actions/${slug}`} />
+        <meta property="og:url" content={`https://taxtherich.netlify.com/actions/${slug}`} />
         <meta property="og:type" content={`article`} />
         <meta property="og:title" content={action.page.heading} />
         <meta property="og:description" content={action.page.subheading} />
