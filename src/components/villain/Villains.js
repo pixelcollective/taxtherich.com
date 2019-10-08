@@ -101,7 +101,7 @@ const Villains = () => {
   ) : error ? (
     <Error />
   ) : data ? (
-    <Box> ``
+    <Box>
       {data.villains.edges.map(({node: {id, villain: {design, action, page, profile}}}) => (
         <Box key={action.actionNetworkId}>
           <motion.div
