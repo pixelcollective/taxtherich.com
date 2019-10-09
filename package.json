@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://taxtherich.com",
   "dependencies": {
     "@apollo/react-hooks": "^3.0.1",
     "@rebass/preset": "^4.0.5",
