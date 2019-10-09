@@ -60,7 +60,7 @@ const Page = () => {
         <meta property="og:url" content={`https://taxtherich.com/${slug}`} />
         <meta property="og:type" content={`article`} />
         <meta property="og:title" content={title} />
-        <meta property="og:image" content={featuredImage.guid} />
+        <meta property="og:image" content={featuredImage.guid ? featuredImage.guid : `https://taxtherich.com/tax-the-rich-share.png`} />
       </Helmet>
     </Box>
   )) : null

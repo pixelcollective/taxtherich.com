@@ -73,7 +73,7 @@ const Home = () => {
         {site.generalSettingsDescription && (
           <meta property="og:description" content={site.generalSettingsDescription} />
         )}
-        <meta property="og:image" content={`https://taxtherich.com/tax-the-rich-share.png`} />
+        <meta property="og:image" content={`/tax-the-rich-share.png`} />
       </Helmet>
     </Box>
   ) : <Loading />
