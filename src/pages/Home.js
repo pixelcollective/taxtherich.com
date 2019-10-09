@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet'
 import { Box } from 'rebass'
 
 // components
+import VectorHeader from './../components/header/VectorHeader'
 import PageHeader from '../components/header/PageHeader'
 import SingleAction from '../components/action/SingleAction'
 import Villains from '../components/villain/Villains'
@@ -62,6 +63,7 @@ const Home = () => {
         disabledBack={true}
         excerpt={site.generalSettingsDescription ? site.generalSettingsDescription : null} />
       <SingleAction heading={action.page.subheading} action={action.action} />
+      <VectorHeader />
       <Villains />
       <Helmet>
         <title>{site.generalSettingsTitle}</title>
@@ -71,7 +73,7 @@ const Home = () => {
         {site.generalSettingsDescription && (
           <meta property="og:description" content={site.generalSettingsDescription} />
         )}
-        <meta property="og:image" content={`https://data.tinypixel.dev/app/uploads/sites/2/2019/10/patricia-valerio-c3faD7HE6io-unsplash.jpg`} />
+        <meta property="og:image" content={`https://taxtherich.com/tax-the-rich-share.png`} />
       </Helmet>
     </Box>
   ) : <Loading />
